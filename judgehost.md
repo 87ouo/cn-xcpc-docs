@@ -2,11 +2,11 @@
 
 ## 版本
 
-Domjudge 7.1.1
+Domjudge 7.2.0
 
 ## 环境
 
-Ubuntu 18.04.3 LTS
+Ubuntu 18.04 LTS
 
 ## 准备工作
 
@@ -28,15 +28,15 @@ sudo apt install make sudo debootstrap libcgroup-dev lsof \
 
 ```shell
 cd Downloads
-wget https://www.domjudge.org/releases/domjudge-7.1.1.tar.gz
+wget https://www.domjudge.org/releases/domjudge-7.2.0.tar.gz
 ```
 
 ```shell
-tar -zxvf domjudge-7.1.1.tar.gz
+tar -zxvf domjudge-7.2.0.tar.gz
 ```
 
 ```shell
-cd domjudge-7.1.1
+cd domjudge-7.2.0
 ./configure --prefix=/opt/domjudge --with-baseurl=127.0.0.1
 make judgehost && sudo make install-judgehost
 ```
@@ -69,7 +69,7 @@ sudo cp /opt/domjudge/judgehost/etc/sudoers-domjudge /etc/sudoers.d/
 
 ### 修改 rest 密码
 
-使用 vim 等文本编辑器编辑 /opt/domjudge/judgehost 目录下 etc/restapi.secret 这个文件。文件的格式为：
+使用 vim 等文本编辑器编辑 /opt/domjudge/judgehost/etc/restapi.secret 这个文件。文件的格式为：
 
 ```text
 default http://example.edu/domjudge/api/  judgehosts  MzfJYWF5agSlUfmiGEy5mgkfqU
@@ -90,11 +90,9 @@ default http://example.edu/domjudge/api/  judgehosts  MzfJYWF5agSlUfmiGEy5mgkfqU
 GRUB_CMDLINE_LINUX_DEFAULT="quiet cgroup_enable=memory swapaccount=1"
 ```
 
-**注意**：如果你在使用由Google Cloud Platform/DigitalOcean提供的虚拟主机，请注意官方文档中的
-```text
- On VM hosting providers such as Google Cloud or DigitalOcean, GRUB_CMDLINE_LINUX_DEFAULT may be overwritten by other files in /etc/default/grub.d/.
-```
-请cd进入该目录后，在里面的.conf文件里进行相关的更改。
+
+**注意**：如果你在使用由Google Cloud Platform/DigitalOcean提供的虚拟主机，请注意官方文档中的 `On VM hosting providers such as Google Cloud or DigitalOcean, GRUB_CMDLINE_LINUX_DEFAULT may be overwritten by other files in /etc/default/grub.d/` 请cd进入该目录后，在里面的.conf文件里进行相关的更改。
+
 
 然后执行：
 
@@ -108,6 +106,8 @@ update-grub
 
 如果需要使用cgroup，则每次重启之后都要运行 `/opt/domjudge/judgehost/bin/create_cgroups`  
 `/opt/domjudge/judgehost/bin/judgedaemon` 即可启动，若提示 `error: Call to undefined function curl_init()`，则可以安装 php-curl 解决  
+
+因为judgehost进程需要一直维持，如果你是运行在VPS等无法一直保持开启终端窗口的环境下时，建议您使用 `screen` 来保活judgehost进程。
 
 ### 配置多 judgehost 的 systemd 及 rsyslog
 
