@@ -89,6 +89,11 @@ default http://example.edu/domjudge/api/  judgehosts  MzfJYWF5agSlUfmiGEy5mgkfqU
 ```shell
 GRUB_CMDLINE_LINUX_DEFAULT="quiet cgroup_enable=memory swapaccount=1"
 ```
+**注意**：如果你在使用由Google Cloud Platform/DigitalOcean提供的虚拟主机，请注意官方文档中的
+```text
+ On VM hosting providers such as Google Cloud or DigitalOcean, GRUB_CMDLINE_LINUX_DEFAULT may be overwritten by other files in /etc/default/grub.d/.
+```
+请cd进入该目录后，在里面的.conf文件里进行相关的更改。
 
 然后执行：
 
