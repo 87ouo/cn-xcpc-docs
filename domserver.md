@@ -2,11 +2,11 @@
 
 ## 版本
 
-Domjudge 7.1.1
+Domjudge 7.2.0
 
 ## 环境
 
-Ubuntu 18.04.3 LTS
+Ubuntu 18.04 LTS
 
 ## 准备工作
 
@@ -40,15 +40,15 @@ sudo phpenmod json
 
 ```shell
 cd Downloads
-wget https://www.domjudge.org/releases/domjudge-7.1.1.tar.gz
+wget https://www.domjudge.org/releases/domjudge-7.2.0.tar.gz
 ```
 
 ```shell
-tar -zxvf domjudge-7.1.1.tar.gz
+tar -zxvf domjudge-7.2.0.tar.gz
 ```
 
 ```shell
-cd domjudge-7.1.1
+cd domjudge-7.2.0
 ./configure --prefix=/opt/domjudge --with-baseurl=127.0.0.1
 make domserver && sudo make install-domserver
 make docs && sudo make install-docs
@@ -94,7 +94,7 @@ sudo systemctl restart mysql
 
 ### 配置 PHP
 
-编辑 `/opt/domjudge/domserver/etc/apache.conf`，取消以下几行内容前的注释：
+编辑 `/opt/domjudge/domserver/etc/apache.conf`，取消以下几行内容前的注释（若没有，请在文件尾加上）：
 
 ```conf
 <IfModule mod_php7.c>
