@@ -109,6 +109,12 @@ update-grub
 
 因为judgehost进程需要一直维持，如果你是运行在VPS等无法一直保持开启终端窗口的环境下时，建议您使用 `screen` 来保活judgehost进程。
 
+
+### 关于题目限制内存大小与JAVA报错的问题
+
+由于DOMjudge的机制，其对于JAVA评测时的 **限制内存大小** 指的是 `JVM堆+栈+永久区` 的合计大小（其他的例如HUSTOJ，其对于JAVA的评测的限制内存大小指的是 `JVM堆 `的大小），所以建议每题的 **限制内存大小** 最少从 **256MB** 起步，推荐 `512MB以上 `或者 `Default` 。
+
+
 ### 配置多 judgehost 的 systemd 及 rsyslog
 
 使用 vim 等文本编辑器在 /lib/systemd/system 下新建一个文本文件叫做 create-cgroups.service，写入下列内容：
