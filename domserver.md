@@ -147,9 +147,11 @@ sudo systemctl restart apache2
 
 对于 Category 一栏，ICPC 2018 沈阳站的做法是常规队伍填 Participants，打星队填 Observers，并在 Team Categories 设置里将 Observers 的 Sortorder 填成 0。
 
+**注意：** 如果你需要使用文件导入的方式来进行队伍以及用户的生成，请注意 `DOMjudge` 只支持 **UTF-8** 文件编码的文件（无需担心中文乱码问题，上传完就能够显示正常）。关于转码问题，可以使用Windows自带的文本编辑器，在另存为时选择 `UTF-8` 的文件编码保存，再将保存好的文件上传至domserver（在Jury界面的 `Import / export` 中）即可。关于文件名及格式问题，请参考ICPC官方wiki： `https://clics.ecs.baylor.edu/index.php?title=Contest_Control_System_Requirements#teams.tsv`  、  `https://clics.ecs.baylor.edu/index.php?title=Contest_Control_System_Requirements#accounts.tsv`  。
+
 ### 生成队伍密码
 
-访问 home 页面，点 Manage team passwords，选中 all teams 和 as userdata.tsv download。注意生成过的密码除了 userdata.tsv 不能在其他地方再被看到。
+访问 home 页面，点 Manage team passwords，选中 all teams 和 as userdata.tsv download（7.2.0：按需选中 All teams 或 Teams without password，点击生成，下载并保存好 `userdata.tsv` ）。**注意：** 生成过的密码除了 userdata.tsv 不能在其他地方再被看到。
 
 ### 添加题目
 
