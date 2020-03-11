@@ -12,7 +12,7 @@ Ubuntu 18.04 LTS
 
 ### 安装依赖包和功能
 
-**注意：** 由于该版本`DOMjudge` 的 `chroot` 子系统安装脚本是 **读取宿主机上的软件目录** 来进行 **子系统中的软件的安装** 的，所以请先在宿主机上 **安装好需要用到的语言的编译器** ，再进行 `judgehost` 的安装。
+**请注意下文的 `Troubleshooting` 中第1节的问题！**
 
 ```shell
 sudo apt-get upgrade && sudo apt-get update
@@ -109,13 +109,6 @@ update-grub
 如果需要使用cgroup，则每次重启之后都要运行 `/opt/domjudge/judgehost/bin/create_cgroups`  
 `/opt/domjudge/judgehost/bin/judgedaemon` 即可启动，若提示 `error: Call to undefined function curl_init()`，则可以安装 php-curl 解决  
 
-因为judgehost进程需要一直维持，如果你是运行在VPS等无法一直保持开启终端窗口的环境下时，建议您使用 `screen` 来保活judgehost进程。
-
-
-### 关于题目限制内存大小与JAVA报错的问题
-
-由于DOMjudge的机制，其对于JAVA评测时的 **限制内存大小** 指的是 `JVM堆+栈+永久区` 的合计大小（其他的例如HUSTOJ，其对于JAVA的评测的限制内存大小指的是 `JVM堆 `的大小），所以建议每题的 **限制内存大小** 最少从 **256MB** 起步，推荐 `512MB以上 `或者 `Default` 。
-
 
 ### 配置多 judgehost 的 systemd 及 rsyslog
 
@@ -181,3 +174,15 @@ sudo systemctl start domjudge-judgehost@3
 judgedaemon的日志会保存在 /var/log/judgehost 下
 
 ## Troubleshooting
+
+### 1.关于judgehost评测语言所需编译器的安装问题
+
+由于该版本`DOMjudge` 的 `chroot` 子系统安装脚本是 **读取宿主机上的软件目录** 来进行 **子系统中的软件的安装** 的，所以请先在宿主机上 **安装好需要用到的语言的编译器** ，再进行 `judgehost` 的安装。
+
+### 2.关于题目限制内存大小与JAVA报错的问题
+
+由于DOMjudge的机制，其对于JAVA评测时的 **限制内存大小** 指的是 `JVM堆+栈+永久区` 的合计大小（其他的例如HUSTOJ，其对于JAVA的评测的限制内存大小指的是 `JVM堆 `的大小），所以建议每题的 **限制内存大小** 最少从 **256MB** 起步，推荐 `512MB以上 `或者 `Default` 。
+
+### 3.关于单个judgehost进程后台保活的问题
+
+因为judgehost进程需要一直维持，如果你是运行在VPS等无法一直保持开启终端窗口的环境下时，建议您使用 `screen` 来保活judgehost进程。
