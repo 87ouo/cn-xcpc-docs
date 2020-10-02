@@ -2,11 +2,11 @@
 
 ## 版本
 
-Domjudge 7.2.0
+Domjudge 7.3.0
 
 ## 环境
 
-Ubuntu 18.04 LTS
+Ubuntu 18.04 LTS(20.04直接安装会出现未知错误，但是可以使用Docker方式安装)
 
 ## 准备工作
 
@@ -78,15 +78,15 @@ pip3 install sphinx_rtd_theme
 
 ```shell
 cd Downloads
-wget https://www.domjudge.org/releases/domjudge-7.2.0.tar.gz
+wget https://www.domjudge.org/releases/domjudge-7.3.0.tar.gz
 ```
 
 ```shell
-tar -zxvf domjudge-7.2.0.tar.gz
+tar -zxvf domjudge-7.3.0.tar.gz
 ```
 
 ```shell
-cd domjudge-7.2.0
+cd domjudge-7.3.0
 ./configure --prefix=/opt/domjudge --with-baseurl=127.0.0.1
 make domserver && sudo make install-domserver
 make docs && sudo make install-docs
@@ -119,8 +119,8 @@ sudo chown www-data:www-data -R /opt/domjudge/domserver/webapp/var/*
 ```cnf
 [mysqld]
 max_connections = 1000
-max_allowed_packet = 16MB
-innodb_log_file_size = 48MB
+max_allowed_packet = 256MB
+innodb_log_file_size = 256MB
 ```
 
 其中 `max_allowed_packet` 数值改成两倍于题目测试数据文件的大小，`innodb_log_file_size` 数值改成十倍于题目测试数据文件的大小。  
@@ -137,8 +137,8 @@ sudo systemctl restart mysql
 ```conf
 <IfModule mod_php7.c>
 php_value max_file_uploads      100
-php_value upload_max_filesize   128M
-php_value post_max_size         128M
+php_value upload_max_filesize   256M
+php_value post_max_size         256M
 php_value memory_limit          512M
 </IfModule>
 ```
