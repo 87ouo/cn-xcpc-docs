@@ -28,13 +28,12 @@ sudo apt install gcc g++ make zip unzip mariadb-server \
 
 安装时选择 `apache2`
 
-接下来
 
 ```shell
 sudo apt install libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev rst2pdf python3-pip python-pip
 ```
 
-更换pip源
+接下来更换pip源
 
 升级 pip 到最新的版本 (>=10.0.0) 后进行配置：
 
@@ -47,6 +46,8 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```shell
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
 ```
+
+然后
 
 ```shell
 sudo phpenmod json 
