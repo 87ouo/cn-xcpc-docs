@@ -45,6 +45,14 @@ sudo pip3 install sphinx
 ```
 
 ```shell
+pip install sphinx_rtd_theme 
+```
+
+```shell
+pip3 install sphinx_rtd_theme 
+```
+
+```shell
 sudo apt install python3-sphinx python-sphinx
 ```
 
