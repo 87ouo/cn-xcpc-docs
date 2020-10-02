@@ -10,7 +10,7 @@ Ubuntu 18.04 LTS
 
 ## 准备工作
 
-### 安装依赖包和功能
+### 安装依赖包和功能，以及更换镜像源
 
 ```shell
 sudo apt-get upgrade && sudo apt-get update
@@ -28,8 +28,24 @@ sudo apt install gcc g++ make zip unzip mariadb-server \
 
 安装时选择 `apache2`
 
+接下来
+
 ```shell
 sudo apt install libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev rst2pdf python3-pip python-pip
+```
+
+更换pip源
+
+升级 pip 到最新的版本 (>=10.0.0) 后进行配置：
+
+```shell
+pip install pip -U
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+```
+如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip：
+
+```shell
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
 ```
 
 ```shell
