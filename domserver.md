@@ -29,19 +29,23 @@ sudo apt install gcc g++ make zip unzip mariadb-server \
 安装时选择 `apache2`
 
 ```shell
-sudo apt install libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev
+sudo apt install libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev rst2pdf python3-pip python-pip
 ```
 
 ```shell
-sudo phpenmod json python3-pip python-pip
+sudo phpenmod json 
 ```
 
 ```shell
-sudo pip install sphinx
+sudo pip install sphinx rst2pdf
 ```
 
 ```shell
-sudo pip3 install sphinx
+sudo pip3 install sphinx rst2pdf
+```
+
+```shell
+sudo apt install python3-sphinx python-sphinx
 ```
 
 ```shell
@@ -52,9 +56,6 @@ pip install sphinx_rtd_theme
 pip3 install sphinx_rtd_theme 
 ```
 
-```shell
-sudo apt install python3-sphinx python-sphinx
-```
 
 ### 编译 Domjudge
 
