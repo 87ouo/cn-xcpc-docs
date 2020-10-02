@@ -33,7 +33,19 @@ sudo apt install libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev
 ```
 
 ```shell
-sudo phpenmod json
+sudo phpenmod json python3-pip python-pip
+```
+
+```shell
+sudo pip install sphinx
+```
+
+```shell
+sudo pip3 install sphinx
+```
+
+```shell
+sudo apt install python3-sphinx python-sphinx
 ```
 
 ### 编译 Domjudge
