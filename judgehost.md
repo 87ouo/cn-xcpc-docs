@@ -2,7 +2,7 @@
 
 ## 版本
 
-Domjudge 7.2.0
+Domjudge 7.3.0
 
 ## 环境
 
@@ -30,15 +30,15 @@ sudo apt install make sudo debootstrap libcgroup-dev lsof \
 
 ```shell
 cd Downloads
-wget https://www.domjudge.org/releases/domjudge-7.2.0.tar.gz
+wget https://www.domjudge.org/releases/domjudge-7.3.0.tar.gz
 ```
 
 ```shell
-tar -zxvf domjudge-7.2.0.tar.gz
+tar -zxvf domjudge-7.3.0.tar.gz
 ```
 
 ```shell
-cd domjudge-7.2.0
+cd domjudge-7.3.0
 ./configure --prefix=/opt/domjudge --with-baseurl=127.0.0.1
 make judgehost && sudo make install-judgehost
 ```
