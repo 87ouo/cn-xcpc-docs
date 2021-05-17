@@ -1,4 +1,4 @@
-# DOMjudge 的 domserver 和 judgehoost 的 docker 安装.
+# DOMjudge 的 domserver 和 judgehoost 的 docker 安装
 
 
 
