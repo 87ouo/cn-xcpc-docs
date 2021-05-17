@@ -26,7 +26,7 @@ sudo systemctl restart docker
 
 
 
-## Mariabd数据库
+## Mariadb数据库
 
 ### 命令解释
 
