@@ -20,4 +20,6 @@ icpc-live: 直播 layout 工具
 
 board: 外榜
 
-docker:  DOMjudge 的 domserver 和 judgehoost 的 docker 安装
+docker: DOMjudge 的 domserver 和 judgehoost 的 docker 安装
+
+event-feed： 比赛event-feed的导出
