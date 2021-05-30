@@ -95,6 +95,12 @@ sudo docker run -it --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name judg
 sudo docker run -it --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name judgehost-1 --link domserver:domserver --hostname judgedaemon-1 -e DAEMON_ID=1 -e JUDGEDAEMON_PASSWORD=[passwd4] -e CONTAINER_TIMEZONE=Asia/Shanghai domjudge/judgehost:7.3.2
 ```
 
+- 若要使用分布式评测，建议`domserver`和`dj-mariadb`放在同一台机器上、同一系统内，`judgehost`可以安装在别的机器上，以减轻前、后端的系统资源压力。`judgehost`安装指令只需按照以下指令类比修改。其中，`DOMSERVER_BASEURL`为`DOMjudge`首页的地址。
+
+```shell
+sudo docker run -it --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name judgehost-3 --hostname judgedaemon-3 -e DAEMON_ID=0 -e JUDGEDAEMON_PASSWORD=I3yd4S6RtdfhQb7Y -e DOMSERVER_BASEURL=http://192.168.1.251/ -e CONTAINER_TIMEZONE=Asia/Shanghai domjudge/judgehost:7.3.2
+```
+
 - 基于实际使用发现，不宜创建过多的`judgehost`，因为`judgehost`也是通过轮询的方式获取`submission`进行判题的，过多的`judgehost`会导致前端访问压力过大，容易导致崩溃或带宽耗尽等情况，所以请结合实际情况和服务器性能，合理部署适当数量的`judgehost`。根据北京理工的经验，开 11 个左右就能挡住 5k 提交了（虽然是在手动管理测评机池的情况下）。
 
 - Python 的测评容易导致 Judgehost 崩溃，莫名其妙。
