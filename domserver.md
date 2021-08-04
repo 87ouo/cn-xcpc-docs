@@ -41,7 +41,7 @@ sudo apt install make sudo debootstrap libcgroup-dev lsof \
 
 
 ```shell
-sudo apt install libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev rst2pdf python3-pip python-pip
+sudo apt install rst2pdf python3-pip python-pip
 ```
 
 接下来更换pip源
