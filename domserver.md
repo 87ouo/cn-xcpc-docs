@@ -29,6 +29,17 @@ sudo apt install gcc g++ make zip unzip mariadb-server \
 安装时选择 `apache2`
 
 
+为防止后续`configure`步骤出错，接下来安装`judgehost`所需依赖
+
+```shell
+sudo apt install make sudo debootstrap libcgroup-dev lsof \
+        php-cli php-curl php-json php-xml php-zip procps \
+        gcc g++ openjdk-8-jre-headless \
+        openjdk-8-jdk ghc fp-compiler \
+        libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev
+```
+
+
 ```shell
 sudo apt install libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev rst2pdf python3-pip python-pip
 ```
