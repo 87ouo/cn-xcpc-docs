@@ -21,8 +21,7 @@ sudo apt-get upgrade && sudo apt-get update
 ```shell
 sudo apt install make sudo debootstrap libcgroup-dev lsof \
         php-cli php-curl php-json php-xml php-zip procps \
-        gcc g++ openjdk-8-jre-headless \
-        openjdk-8-jdk ghc fp-compiler \
+        gcc g++ ghc fp-compiler default-jre-headless default-jdk-headless\
         libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev
 ```
 
