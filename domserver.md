@@ -2,11 +2,11 @@
 
 ## 版本
 
-Domjudge 7.3.0
+Domjudge 7.3.3
 
 ## 环境
 
-Ubuntu 18.04 LTS(20.04直接安装会出现未知错误，但是可以使用Docker方式安装)
+Ubuntu 21.04
 
 ## 准备工作
 
@@ -20,10 +20,10 @@ sudo apt-get upgrade && sudo apt-get update
 sudo apt install gcc g++ make zip unzip mariadb-server \
         apache2 php php-cli libapache2-mod-php php-zip \
         php-gd php-curl php-mysql php-json php-xml php-intl php-mbstring \
-        acl bsdmainutils ntp phpmyadmin python-pygments \
+        acl bsdmainutils ntp phpmyadmin python3-pygments \
         libcgroup-dev linuxdoc-tools linuxdoc-tools-text \
         groff texlive-latex-recommended texlive-latex-extra \
-        texlive-fonts-recommended texlive-lang-european composer
+        texlive-fonts-recommended texlive-lang-european composer php-fpm
 ```
 
 安装时选择 `apache2`
@@ -34,14 +34,14 @@ sudo apt install gcc g++ make zip unzip mariadb-server \
 ```shell
 sudo apt install make sudo debootstrap libcgroup-dev lsof \
         php-cli php-curl php-json php-xml php-zip procps \
-        gcc g++ openjdk-8-jre-headless \
-        openjdk-8-jdk ghc fp-compiler \
+        gcc g++ ghc fp-compiler default-jre-headless default-jdk-headless\
         libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev
 ```
 
+到这里，如果不需要编译 `Team manual` 的话，就可以跳过下面步骤，直接执行【编译DOMjudge】
 
 ```shell
-sudo apt install rst2pdf python3-pip python-pip
+sudo apt install rst2pdf python3-pip
 ```
 
 接下来更换pip源
@@ -65,23 +65,15 @@ sudo phpenmod json
 ```
 
 ```shell
-sudo pip install sphinx rst2pdf
-```
-
-```shell
 sudo pip3 install sphinx rst2pdf
 ```
 
 ```shell
-sudo apt install python3-sphinx python-sphinx
+sudo apt install python3-sphinx
 ```
 
 ```shell
-pip install sphinx_rtd_theme 
-```
-
-```shell
-pip3 install sphinx_rtd_theme 
+pip3 install sphinx_rtd_theme pickled
 ```
 
 
@@ -89,18 +81,18 @@ pip3 install sphinx_rtd_theme
 
 ```shell
 cd Downloads
-wget https://www.domjudge.org/releases/domjudge-7.3.0.tar.gz
+wget https://www.domjudge.org/releases/domjudge-7.3.3.tar.gz
 ```
 
 ```shell
-tar -zxvf domjudge-7.3.0.tar.gz
+tar -zxvf domjudge-7.3.3.tar.gz
 ```
 
 ```shell
-cd domjudge-7.3.0
+cd domjudge-7.3.3
 ./configure --prefix=/opt/domjudge --with-baseurl=127.0.0.1
 make domserver && sudo make install-domserver
-make docs && sudo make install-docs
+（不需要编译 Team manual 可以跳过此执行命令）make docs && sudo make install-docs
 ```
 
 ### 配置数据库
@@ -130,8 +122,8 @@ sudo chown www-data:www-data -R /opt/domjudge/domserver/webapp/var/*
 ```cnf
 [mysqld]
 max_connections = 1000
-max_allowed_packet = 256MB
-innodb_log_file_size = 256MB
+max_allowed_packet = 512MB
+innodb_log_file_size = 512MB
 ```
 
 其中 `max_allowed_packet` 数值改成两倍于题目测试数据文件的大小，`innodb_log_file_size` 数值改成十倍于题目测试数据文件的大小。  
@@ -147,14 +139,14 @@ sudo systemctl restart mysql
 
 ```conf
 <IfModule mod_php7.c>
-php_value max_file_uploads      100
-php_value upload_max_filesize   256M
-php_value post_max_size         256M
-php_value memory_limit          512M
+php_value max_file_uploads      110
+php_value upload_max_filesize   512M
+php_value post_max_size         512M
+php_value memory_limit          1024M
 </IfModule>
 ```
 
-编辑 `/etc/php/7.2/apache2/php.ini`，搜索 `date.timezone` 关键字，取消其行前注释，并将其值设为 `Asia/Shanghai`。搜索 `max_execution_time` 关键字，将其值由30改为300，防止生成队伍密码时 PHP 执行超时。
+编辑 `/etc/php/7.4/apache2/php.ini`，搜索 `date.timezone` 关键字，取消其行前注释，并将其值设为 `Asia/Shanghai`。搜索 `max_execution_time` 关键字，将其值由30改为300，防止生成队伍密码时 PHP 执行超时。
 
 ```shell
 sudo systemctl restart apache2
