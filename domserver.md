@@ -6,7 +6,7 @@ Domjudge 7.3.3
 
 ## 环境
 
-Ubuntu 21.04
+Ubuntu 20.04/21.04
 
 ## 准备工作
 
