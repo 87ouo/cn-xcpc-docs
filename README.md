@@ -1,4 +1,4 @@
-# cn-xcpc-docs(已更新为domjudge7.3.0)
+# cn-xcpc-docs(已更新为domjudge7.3.2 - 7.3.3)
 
 ## 食用指南
 
