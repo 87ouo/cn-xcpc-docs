@@ -17,7 +17,11 @@ sudo apt-get upgrade && sudo apt-get update
 ```
 
 ```shell
-sudo apt install gcc g++ make zip unzip mariadb-server \
+(new)sudo apt install acl zip unzip mariadb-server apache2 \
+        php php-fpm php-gd php-cli php-intl php-mbstring php-mysql \
+        php-curl php-json php-xml php-zip composer ntp
+
+(old)sudo apt install gcc g++ make zip unzip mariadb-server \
         apache2 php php-cli libapache2-mod-php php-zip \
         php-gd php-curl php-mysql php-json php-xml php-intl php-mbstring \
         acl bsdmainutils ntp phpmyadmin python3-pygments \
