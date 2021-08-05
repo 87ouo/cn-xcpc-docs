@@ -45,7 +45,8 @@ tar -zxvf domjudge-7.3.3.tar.gz
 ```shell
 cd domjudge-7.3.3
 ./configure --prefix=/opt/domjudge --with-baseurl=127.0.0.1
-make domserver && sudo make install-domserver
+make domserver
+sudo make install-domserver
 ```
 
 ### 配置数据库
