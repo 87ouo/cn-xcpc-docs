@@ -77,7 +77,7 @@ sudo apt install python3-sphinx
 ```
 
 ```shell
-pip3 install sphinx_rtd_theme pickled
+sudo pip3 install sphinx_rtd_theme pickled
 ```
 
 
