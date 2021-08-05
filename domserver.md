@@ -17,21 +17,10 @@ sudo apt-get upgrade && sudo apt-get update
 ```
 
 ```shell
-(new)sudo apt install acl zip unzip mariadb-server apache2 \
+sudo apt install acl zip unzip mariadb-server apache2 \
         php php-gd php-cli php-intl php-mbstring php-mysql \
         php-curl php-json php-xml php-zip composer ntp
-
-(old)sudo apt install gcc g++ make zip unzip mariadb-server \
-        apache2 php php-cli libapache2-mod-php php-zip \
-        php-gd php-curl php-mysql php-json php-xml php-intl php-mbstring \
-        acl bsdmainutils ntp phpmyadmin python3-pygments \
-        libcgroup-dev linuxdoc-tools linuxdoc-tools-text \
-        groff texlive-latex-recommended texlive-latex-extra \
-        texlive-fonts-recommended texlive-lang-european composer php-fpm
 ```
-
-安装时选择 `apache2`
-
 
 为防止后续`configure`步骤出错，接下来安装`judgehost`所需依赖
 
@@ -41,45 +30,6 @@ sudo apt install make sudo debootstrap libcgroup-dev lsof \
         gcc g++ ghc fp-compiler default-jre-headless default-jdk-headless\
         libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev
 ```
-
-到这里，如果不需要编译 `Team manual` 的话，就可以跳过下面步骤，直接执行【编译DOMjudge】
-
-```shell
-sudo apt install rst2pdf python3-pip
-```
-
-接下来更换pip源
-
-升级 pip 到最新的版本 (>=10.0.0) 后进行配置：
-
-```shell
-pip3 install pip -U
-pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-```
-如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip：
-
-```shell
-pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
-```
-
-然后
-
-```shell
-sudo phpenmod json 
-```
-
-```shell
-sudo pip3 install sphinx rst2pdf
-```
-
-```shell
-sudo apt install python3-sphinx
-```
-
-```shell
-sudo pip3 install sphinx_rtd_theme pickled
-```
-
 
 ### 编译 Domjudge
 
@@ -96,7 +46,6 @@ tar -zxvf domjudge-7.3.3.tar.gz
 cd domjudge-7.3.3
 ./configure --prefix=/opt/domjudge --with-baseurl=127.0.0.1
 make domserver && sudo make install-domserver
-（不需要编译 Team manual 可以跳过此执行命令）make docs && sudo make install-docs
 ```
 
 ### 配置数据库
