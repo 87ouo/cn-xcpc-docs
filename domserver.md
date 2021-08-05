@@ -49,13 +49,13 @@ sudo apt install rst2pdf python3-pip
 升级 pip 到最新的版本 (>=10.0.0) 后进行配置：
 
 ```shell
-pip install pip -U
-pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+pip3 install pip -U
+pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip：
 
 ```shell
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
+pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
 ```
 
 然后
