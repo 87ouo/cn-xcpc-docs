@@ -10,7 +10,7 @@ Ubuntu 20.04/21.04
 
 ## 准备工作
 
-### 安装依赖包和功能，以及更换镜像源
+### 安装依赖包和功能
 
 ```shell
 sudo apt-get upgrade && sudo apt-get update
