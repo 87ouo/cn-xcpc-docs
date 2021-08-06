@@ -174,14 +174,14 @@ sudo systemctl start domjudge-judgehost@3
 
 ## Troubleshooting
 
-### 1.关于judgehost评测语言所需编译器的安装问题
+### 1.关于 judgehost 评测语言所需编译器的安装问题
 
 由于 `judgehost` 的运行机理，请先在宿主机上 **安装好需要用到的语言的编译器** ，再进行 `judgehost` 的安装。或者在安装好后， `chroot` 进入对应的 `chroot` 目录后，再进行新语言编译器的安装。
 
-### 2.关于题目限制内存大小与JAVA报错的问题
+### 2.关于题目限制内存大小与 JAVA 报错的问题
 
 由于 DOMjudge 的机制，其对于 JAVA 评测时的 **限制内存大小** 指的是 `JVM堆+栈+永久区` 的合计大小（其他的例如 HUSTOJ，其对于 JAVA 的评测的限制内存大小指的是 `JVM堆` 的大小），所以建议每题的 **限制内存大小** 最少从 **256MB** 起步，推荐 `512MB` 以上或者 `Default` 。
 
-### 3.关于单个judgehost进程后台保活的问题
+### 3.关于单个 judgehost 进程后台保活的问题
 
 因为 judgehost 进程需要一直维持，如果你是运行在 VPS 等无法一直保持开启终端窗口的环境下时，建议您使用 `screen` 来保活 judgehost 进程。
