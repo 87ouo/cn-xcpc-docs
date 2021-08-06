@@ -180,7 +180,7 @@ sudo systemctl start domjudge-judgehost@3
 
 ### 2.关于题目限制内存大小与JAVA报错的问题
 
-由于DOMjudge的机制，其对于JAVA评测时的 **限制内存大小** 指的是 `JVM堆+栈+永久区` 的合计大小（其他的例如HUSTOJ，其对于JAVA的评测的限制内存大小指的是 `JVM堆 `的大小），所以建议每题的 **限制内存大小** 最少从 **256MB** 起步，推荐 `512MB以上 `或者 `Default` 。
+由于DOMjudge的机制，其对于JAVA评测时的 **限制内存大小** 指的是 `JVM堆+栈+永久区` 的合计大小（其他的例如HUSTOJ，其对于JAVA的评测的限制内存大小指的是 `JVM堆` 的大小），所以建议每题的 **限制内存大小** 最少从 **256MB** 起步，推荐 `512MB以上 `或者 `Default` 。
 
 ### 3.关于单个judgehost进程后台保活的问题
 
