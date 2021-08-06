@@ -12,7 +12,7 @@ Ubuntu 20.04/21.04
 
 ### 安装依赖包和功能
 
-**请注意下文的 `Troubleshooting` 中第1节的问题！**
+**请注意下文的 `Troubleshooting` 中第 1 节的问题！**
 
 ```shell
 sudo apt-get upgrade && sudo apt-get update
@@ -71,29 +71,29 @@ sudo cp /opt/domjudge/judgehost/etc/sudoers-domjudge /etc/sudoers.d/
 
 ### 修改 rest 密码
 
-使用 vim 等文本编辑器编辑 /opt/domjudge/judgehost/etc/restapi.secret 这个文件。文件的格式为：
+使用 `vim` 、`nano` 等文本编辑器编辑 `/opt/domjudge/judgehost/etc/restapi.secret` 这个文件。文件的格式为：
 
 ```text
 default http://example.edu/domjudge/api/  judgehosts  MzfJYWF5agSlUfmiGEy5mgkfqU
 ```
 
-格式为 endpoint api_url username password ，endpoint 可以保持不变，api_url 根据 judgeserver 的地址进行修改，username 和 password 要与 judgeserver 上的 etc/restapi.secret 保持一致。
+格式为 `endpoint api_url username password` ，`endpoin` 可以保持不变，`api_url` 根据 `domserver` 的地址进行修改，`username` 和 `password` 要与 `domserver` 上的 `etc/restapi.secret`  保持一致。
 
 ### 构建 chroot 环境
 
-使用 vim 等文本编辑器编辑 /opt/domjudge/judgehost/bin 目录下的 dj_make_chroot 脚本，搜索 mirror 这个关键字，并更改搜索到的 ubuntu 的 mirror 为国内源（例如清华源，mirrors.tuna.tsinghua.edu.cn/ubuntu）（注意，脚本中除了 ubuntu mirror 还有 debian mirror 的配置，不要改错了），紧跟着 mirror 配置的下面有 proxy 代理服务器的配置，因为这一步需要访问网络，若需要配置代理服务器请按需设置。  
+使用 `vim` 、`nano` 等文本编辑器编辑 `/opt/domjudge/judgehost/bin` 目录下的 `dj_make_chroot` 脚本，搜索 `mirror` 这个关键字，并更改搜索到的 ubuntu 的 mirror 更换为国内源（例如清华源， `http://mirrors.tuna.tsinghua.edu.cn/ubuntu/` ）（注意，脚本中除了 ubuntu mirror 还有 debian mirror 的配置，不要改错了），紧跟着 mirror 配置的下面有 proxy 代理服务器的配置，因为这一步需要访问网络，若需要配置代理服务器请按需设置。  
 修改之后**保存并运行此脚本**。这一步会从源上下载必要的软件包，所以请耐心等待。
 
 ### 设置 cgroup
 
-使用 vim 等文本编辑器编辑 /etc/default/grub 这个文件，对其中的这一行做如下修改：
+使用 `vim` 、`nano` 等文本编辑器编辑 `/etc/default/grub` 这个文件，对其中的这一行做如下修改：
 
 ```shell
 GRUB_CMDLINE_LINUX_DEFAULT="quiet cgroup_enable=memory swapaccount=1"
 ```
 
 
-**注意**：如果你在使用由Google Cloud Platform/DigitalOcean提供的虚拟主机，请注意官方文档中的 `On VM hosting providers such as Google Cloud or DigitalOcean, GRUB_CMDLINE_LINUX_DEFAULT may be overwritten by other files in /etc/default/grub.d/` 请cd进入该目录后，在里面的.conf文件里进行相关的更改。
+**注意**：如果你在使用由 Google Cloud Platform 或 DigitalOcean 提供的虚拟主机，请注意官方文档中的 `On VM hosting providers such as Google Cloud or DigitalOcean, GRUB_CMDLINE_LINUX_DEFAULT may be overwritten by other files in /etc/default/grub.d/` 请 cd 进入该目录后，在里面的 `.conf` 文件里进行相关的更改。
 
 
 然后执行：
@@ -106,12 +106,12 @@ update-grub
 
 ### 启动 judgehost
 
-如果需要使用cgroup，则每次重启之后都要运行 `/opt/domjudge/judgehost/bin/create_cgroups` 和 `/opt/domjudge/judgehost/bin/judgedaemon` 后即可启动，若提示 `error: Call to undefined function curl_init()`，则可以安装 php-curl 解决  
+如果需要使用 cgroup ，则每次重启之后都要运行 `/opt/domjudge/judgehost/bin/create_cgroups` 和 `/opt/domjudge/judgehost/bin/judgedaemon` 后即可启动，若提示 `error: Call to undefined function curl_init()`，则可以安装 php-curl 解决  
 
 
 ### 配置多 judgehost 的 systemd 及 rsyslog
 
-使用 vim 等文本编辑器在 /lib/systemd/system 下新建一个文本文件叫做 create-cgroups.service，写入下列内容：
+使用 `vim` 、`nano` 等文本编辑器在 `/lib/systemd/system` 下新建一个文本文件叫做 `create-cgroups.service`，写入下列内容：
 
 ```shell
 [Unit]
@@ -123,8 +123,8 @@ ExecStart=/opt/domjudge/judgehost/bin/create_cgroups
 RemainAfterExit=true
 ```
 
-在 /lib/systemd/system 下再新建一个文本文件叫做 domjudge-judgehost@.service，写入下列内容：
-注意 `User=<username>` 要用自己编译 judgehost 时的用户名，因为 /etc/sudoers.d/sudoers-domjudge 列表里是当时的用户
+在 `/lib/systemd/system` 下再新建一个文本文件叫做 `domjudge-judgehost@.service`，写入下列内容：
+注意 `User=<username>` 要用自己编译 `judgehost` 时的用户名，因为 `/etc/sudoers.d/sudoers-domjudge` 列表里是当时的用户
 
 ```shell
 [Unit]
@@ -151,7 +151,7 @@ SyslogIdentifier=judgehost-%i
 WantedBy=multi-user.target
 ```
 
-在 /etc/rsyslog.d/ 下新建一个文本文件叫做 judgehost.conf，写入下列内容：
+在 `/etc/rsyslog.d/` 下新建一个文本文件叫做 `judgehost.conf`，写入下列内容：
 
 ```conf
 :programname, isequal, "judgehost-0" /var/log/judgehost/judgehost-0.log
@@ -160,7 +160,7 @@ WantedBy=multi-user.target
 :programname, isequal, "judgehost-3" /var/log/judgehost/judgehost-3.log
 ```
 
-重启日志服务，启动四个 judgehost：
+重启日志服务，启动四个 `judgehost`：
 
 ```shell
 sudo systemctl restart rsyslog
@@ -170,7 +170,7 @@ sudo systemctl start domjudge-judgehost@2
 sudo systemctl start domjudge-judgehost@3
 ```
 
-judgedaemon的日志会保存在 /var/log/judgehost 下
+`judgedaemon`的日志会保存在 `/var/log/judgehost` 下
 
 ## Troubleshooting
 
