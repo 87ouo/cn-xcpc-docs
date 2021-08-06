@@ -120,7 +120,7 @@ sudo systemctl restart apache2
 
 ## 配置 domserver
 
-访问 `http://127.0.0.1/domjudge`，使用用户名 `admin` 与 `/opt/domjudge/domserver/etc/initial_admin_password.secret` 内生成的密码登录。
+访问 `http://127.0.0.1/domjudge` ，使用用户名 `admin` 与 `/opt/domjudge/domserver/etc/initial_admin_password.secret` 内生成的密码登录。
 
 ### 修改 admin 密码
 
