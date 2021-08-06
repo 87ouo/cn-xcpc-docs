@@ -49,6 +49,7 @@ sudo docker run -it --name dj-mariadb -e MYSQL_ROOT_PASSWORD=[passwd1] -e MYSQL_
 - `MYSQL_ROOT_PASSWORD` 和 `MYSQL_PASSWORD` 一定要第一条命令中的值一致。容器link操作`dj-mariadb:mariadb`，容器MySQL主机地址设置为`mariadb`，容器名为`domserver`，MySQL用户为`domjudge`，密码对应`[passwd2]`，root密码对应`[passwd1]`，容器时区设置为`Asia/Shanghai`，容器对外开放端口`80`，本次指令中容器从docker-hub上拉取的DOMjudge镜像版本为`7.3.2`，这个版本必须与下方`judgehost`创建指令中的一致。
 
 - 关于性能，根据北京理工的经验，千兆网络，36 核 80G 平均 CPU 占用不超过 50%，内存也不超过 3G。
+- 根据黑龙江大学的经验，千兆内网、 `domserver` 与 `judgehost` 所在实体机分离的情况下， `domserver` 分配 6 核 16G、 `judgehost` 分别在 2 台实体机上各运行 2 个，且2台实体机各为 4 核 6G，对于150+ teams、 5H 大概 3K 的提交，没有问题（题目的测试数据点均在 30 个以内，题目内存限制均在 512MB 以内，题目时间限制均在 2s 以内）。
 
 ```shell
 sudo docker run --link dj-mariadb:mariadb -it -e MYSQL_HOST=mariadb -e MYSQL_USER=domjudge -e MYSQL_DATABASE=domjudge -e CONTAINER_TIMEZONE=Asia/Shanghai -e MYSQL_PASSWORD=[passwd2] -e MYSQL_ROOT_PASSWORD=[passwd1] -p 80:80 --name domserver domjudge/domserver:7.3.2
@@ -83,7 +84,7 @@ Initial judgehost password is [passwd4]
 
 ### 命令解释
 
-- 容器名为`judgehost-0`，容器link操作`domserver:domserver`，判题机命名为`judgedaemon-0`，对应ID为`0`，`JUDGEDAEMON_PASSWORD`要确保与上面获得的`jusgehost`的账号密码`[passwd4]`一致，容器时区设置为`Asia/Shanghai`，容器拿去镜像版本要和`domserver`的确保一致，本命令使用的版本是`7.3.2`。
+- 容器名为`judgehost-0`，容器link操作`domserver:domserver`，判题机命名为`judgedaemon-0`，对应ID为`0`，`JUDGEDAEMON_PASSWORD`要确保与上面获得的`jusgehost`的账号密码`[passwd4]`一致，容器时区设置为`Asia/Shanghai`，容器拉取镜像版本要和`domserver`的确保一致，本命令使用的版本是`7.3.2`。
 
 ```shell
 sudo docker run -it --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name judgehost-0 --link domserver:domserver --hostname judgedaemon-0 -e DAEMON_ID=0 -e JUDGEDAEMON_PASSWORD=[passwd4] -e CONTAINER_TIMEZONE=Asia/Shanghai domjudge/judgehost:7.3.2
@@ -103,7 +104,7 @@ sudo docker run -it --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name judg
 
 - 基于实际使用发现，不宜创建过多的`judgehost`，因为`judgehost`也是通过轮询的方式获取`submission`进行判题的，过多的`judgehost`会导致前端访问压力过大，容易导致崩溃或带宽耗尽等情况，所以请结合实际情况和服务器性能，合理部署适当数量的`judgehost`。根据北京理工的经验，开 11 个左右就能挡住 5k 提交了（虽然是在手动管理测评机池的情况下）。
 
-- Python 的测评容易导致 Judgehost 崩溃，莫名其妙。
+- 对于 Python 测评容易导致 Judgehost 崩溃的问题，这里给出一种解决方法（该方法也适用于需要添加新的评测语言的时候）： ① `docker exec -it [container_name] bash` 进入 Judgehost 容器内。 ② chroot 进入其中的 chroot 目录。 ③执行 `apt update/install` 进行安装即可。
 
 - 如果大面积挂掉的话检查网络。
 
