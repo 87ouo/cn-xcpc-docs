@@ -144,7 +144,7 @@ sudo systemctl restart apache2
 
 ### 生成队伍密码
 
-访问 home 页面，点 Manage team passwords，选中 all teams 和 as userdata.tsv download（7.2.0：按需选中 All teams 或 Teams without password，点击生成，下载并保存好 `userdata.tsv` ）。**注意：** 生成过的密码除了 userdata.tsv 不能在其他地方再被看到。
+访问 home 页面，点 Manage team passwords，选中 all teams 和 as userdata.tsv download（按需选中 All teams 或 Teams without password，点击生成，下载并保存好 `userdata.tsv` ）。**注意：** 生成过的密码除了 userdata.tsv 不能在其他地方再被看到。
 
 ### 添加题目
 
