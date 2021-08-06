@@ -11,10 +11,9 @@ sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
     "registry-mirrors": [
-        "https://1nj0zren.mirror.aliyuncs.com",
-        "https://dockerhub.azk8s.cn",
+        "https://reg-mirror.qiniu.com",
         "https://mirror.ccs.tencentyun.com",
-        "http://f1361db2.m.daocloud.io"
+        "http://hub-mirror.c.163.com"
     ]
 }
 EOF
