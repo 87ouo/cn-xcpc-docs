@@ -163,3 +163,10 @@ sudo systemctl restart apache2
 ### 1.关于本地上传文件生成队伍及用户的中文编码的问题
 
 如果你需要使用文件导入的方式来进行队伍以及用户的生成，请注意 `DOMjudge` 只支持 **UTF-8** 文件编码的文件（无需担心本地转换完后中文乱码的问题，上传完就能够显示正常）。关于转码问题，可以使用Windows自带的文本编辑器，在另存为时选择 `UTF-8` 的文件编码保存，再将保存好的文件上传至domserver（在Jury界面的 `Import / export` 中）即可。关于文件名及格式问题，请参考ICPC官方wiki： `https://clics.ecs.baylor.edu/index.php?title=Contest_Control_System_Requirements#teams.tsv`  、  `https://clics.ecs.baylor.edu/index.php?title=Contest_Control_System_Requirements#accounts.tsv`  。
+
+### 2.上传到最后几道题目时频繁超时
+
+前述 MySQL 配置主要针对上传过大测试数据时的 5xx 报错问题，如果上传最后几道题目出现超时，两个可选操作(推荐操作2)：
+
+1. 将 innodb_log_file_size 修改为两倍于所有题目测试数据文件的大小，重启 mysql
+2. 关闭 mysql，将 innodb_log_files_in_group 修改为 3，开启 mysql
