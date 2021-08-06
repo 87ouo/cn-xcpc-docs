@@ -99,7 +99,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet cgroup_enable=memory swapaccount=1"
 然后执行：
 
 ```shell
-update-grub
+sudo update-grub
 ```
 
 之后**重启计算机**。
