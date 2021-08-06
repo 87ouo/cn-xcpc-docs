@@ -120,7 +120,7 @@ sudo systemctl restart apache2
 
 ## 配置 domserver
 
-访问 `http://127.0.0.1/domjudge` ，使用用户名 `admin` 与 `/opt/domjudge/domserver/etc/initial_admin_password.secret` 内生成的密码登录。
+访问 `http://127.0.0.1/domjudge`，使用用户名 `admin` 与 `/opt/domjudge/domserver/etc/initial_admin_password.secret` 内生成的密码登录。
 
 ### 修改 admin 密码
 
@@ -144,7 +144,7 @@ sudo systemctl restart apache2
 
 ### 生成队伍密码
 
-访问 home 页面，点 Manage team passwords，选中 all teams 和 as userdata.tsv download（按需选中 All teams 或 Teams without password，点击生成，下载并保存好 `userdata.tsv` ）。**注意：** 生成过的密码除了 userdata.tsv 不能在其他地方再被看到。
+访问 home 页面，点 Manage team passwords，选中 all teams 和 as userdata.tsv download（按需选中 All teams 或 Teams without password，点击生成，下载并保存好 `userdata.tsv` ）。**注意：** 生成过的密码除了 `userdata.tsv` 不能在其他地方再被看到。
 
 ### 添加题目
 
