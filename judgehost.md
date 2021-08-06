@@ -51,13 +51,13 @@ sudo make install-judgehost
 ### 添加用户
 
 ```shell
-useradd -d /nonexistent -U -M -s /bin/false domjudge-run
+sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
 # 如果 judgehost 拥有多个 CPU 核心，你可以添加额外的用户来支持绑定，但是要记得修改 judgehost-static.php 等文件里的 `RUNUSER` 。
 # 不同的 judgehost 进程到不同的 CPU 核心上，如下：
-useradd -d /nonexistent -U -M -s /bin/false domjudge-run-0
-useradd -d /nonexistent -U -M -s /bin/false domjudge-run-1
-useradd -d /nonexistent -U -M -s /bin/false domjudge-run-2
-useradd -d /nonexistent -U -M -s /bin/false domjudge-run-3
+sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-0
+sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-1
+sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-2
+sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-3
 # ... 如果有更多的 CPU 核心，请自行添加更多的用户
 ```
 
