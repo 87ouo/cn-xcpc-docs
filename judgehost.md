@@ -71,22 +71,22 @@ sudo cp /opt/domjudge/judgehost/etc/sudoers-domjudge /etc/sudoers.d/
 
 ### 修改 rest 密码
 
-使用 `vim` 、`nano` 等文本编辑器编辑 `/opt/domjudge/judgehost/etc/restapi.secret` 这个文件。文件的格式为：
+使用 `vim`、`nano` 等文本编辑器编辑 `/opt/domjudge/judgehost/etc/restapi.secret` 这个文件。文件的格式为：
 
 ```text
 default http://example.edu/domjudge/api/  judgehosts  MzfJYWF5agSlUfmiGEy5mgkfqU
 ```
 
-格式为 `endpoint api_url username password` ，`endpoin` 可以保持不变，`api_url` 根据 `domserver` 的地址进行修改，`username` 和 `password` 要与 `domserver` 上的 `etc/restapi.secret`  保持一致。
+格式为 `endpoint api_url username password`，`endpoin` 可以保持不变，`api_url` 根据 `domserver` 的地址进行修改，`username` 和 `password` 要与 `domserver` 上的 `etc/restapi.secret`  保持一致。
 
 ### 构建 chroot 环境
 
-使用 `vim` 、`nano` 等文本编辑器编辑 `/opt/domjudge/judgehost/bin` 目录下的 `dj_make_chroot` 脚本，搜索 `mirror` 这个关键字，并更改搜索到的 ubuntu 的 mirror 更换为国内源（例如清华源， `http://mirrors.tuna.tsinghua.edu.cn/ubuntu/` ）（注意，脚本中除了 ubuntu mirror 还有 debian mirror 的配置，不要改错了），紧跟着 mirror 配置的下面有 proxy 代理服务器的配置，因为这一步需要访问网络，若需要配置代理服务器请按需设置。  
+使用 `vim`、`nano` 等文本编辑器编辑 `/opt/domjudge/judgehost/bin` 目录下的 `dj_make_chroot` 脚本，搜索 `mirror` 这个关键字，并更改搜索到的 ubuntu 的 mirror 更换为国内源（例如清华源， `http://mirrors.tuna.tsinghua.edu.cn/ubuntu/` ）（注意，脚本中除了 ubuntu mirror 还有 debian mirror 的配置，不要改错了），紧跟着 mirror 配置的下面有 proxy 代理服务器的配置，因为这一步需要访问网络，若需要配置代理服务器请按需设置。  
 修改之后**保存并运行此脚本**。这一步会从源上下载必要的软件包，所以请耐心等待。
 
 ### 设置 cgroup
 
-使用 `vim` 、`nano` 等文本编辑器编辑 `/etc/default/grub` 这个文件，对其中的这一行做如下修改：
+使用 `vim`、`nano` 等文本编辑器编辑 `/etc/default/grub` 这个文件，对其中的这一行做如下修改：
 
 ```shell
 GRUB_CMDLINE_LINUX_DEFAULT="quiet cgroup_enable=memory swapaccount=1"
@@ -111,7 +111,7 @@ sudo update-grub
 
 ### 配置多 judgehost 的 systemd 及 rsyslog
 
-使用 `vim` 、`nano` 等文本编辑器在 `/lib/systemd/system` 下新建一个文本文件叫做 `create-cgroups.service`，写入下列内容：
+使用 `vim`、`nano` 等文本编辑器在 `/lib/systemd/system` 下新建一个文本文件叫做 `create-cgroups.service`，写入下列内容：
 
 ```shell
 [Unit]
