@@ -81,7 +81,16 @@ default http://example.edu/domjudge/api  judgehosts  MzfJYWF5agSlUfmiGEy5mgkfqU
 
 ### 构建 chroot 环境
 
-使用 `vim`、`nano` 等文本编辑器编辑 `/opt/domjudge/judgehost/bin` 目录下的 `dj_make_chroot` 脚本，搜索 `mirror` 这个关键字，并更改搜索到的 ubuntu 的 mirror 更换为国内源（例如清华源， `http://mirrors.tuna.tsinghua.edu.cn/ubuntu/`）（注意，脚本中除了 ubuntu mirror 还有 debian mirror 的配置，不要改错了），紧跟着 mirror 配置的下面有 proxy 代理服务器的配置，因为这一步需要访问网络，若需要配置代理服务器请按需设置。  
+编辑 `/opt/domjudge/judgehost/bin` 目录下的 `dj_make_chroot` 脚本，搜索 `mirror` 这个关键字，并更改搜索到的 ubuntu 的 mirror 更换为国内源（例如清华源， `http://mirrors.tuna.tsinghua.edu.cn/ubuntu/`）（注意，脚本中除了 ubuntu mirror 还有 debian mirror 的配置，不要改错了），紧跟着 mirror 配置的下面有 proxy 代理服务器的配置，因为这一步需要访问网络，若需要配置代理服务器请按需设置。  
+**也可以采用以下方法：**
+如果你的服务器在国内，访问国外速度较慢，则考虑更换 chroot 环境中 apt 的源为合适的镜像。
+
+```shell
+sudo sed -i 's,http://us.archive.ubuntu.com./ubuntu/,http://cn.archive.ubuntu.com/ubuntu,g' /opt/domjudge/judgehost/bin/dj_make_chroot
+```
+
+其中 `cn.archive.ubuntu.com` 也可以更换成其他源，例如 `mirrors.tuna.tsinghua.edu.cn`、`mirrors.aliyun.com`、`mirrors.cloud.aliyuncs.com`（在阿里云 ECS 上推荐）、`azure.archive.ubuntu.com`（在 Azure 上推荐）……
+
 修改之后**保存并运行此脚本**。这一步会从源上下载必要的软件包，所以请耐心等待。
 
 ### 设置 cgroup
