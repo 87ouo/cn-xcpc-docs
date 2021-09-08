@@ -118,7 +118,7 @@ sudo update-grub
 如果需要使用 cgroup，则每次重启之后都要运行 `/opt/domjudge/judgehost/bin/create_cgroups` 和 `/opt/domjudge/judgehost/bin/judgedaemon` 后即可启动，若提示 `error: Call to undefined function curl_init()`，则可以安装 php-curl 解决  
 
 
-### 配置多 judgehost 的 systemd 及 rsyslog 旧方法
+### 配置多 judgehost 的 systemd 及 rsyslog
 
 使用 `vim`、`nano` 等文本编辑器在 `/lib/systemd/system` 下新建一个文本文件叫做 `create-cgroups.service`，写入下列内容：
 
