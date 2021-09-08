@@ -15,7 +15,7 @@ Ubuntu 20.04 LTS / 21.04
 **请注意下文的 `Troubleshooting` 中第 1 节的问题！**
 
 ```shell
-sudo apt-get upgrade && sudo apt-get update
+sudo apt-get update && sudo apt-get upgrade
 ```
 
 ```shell
