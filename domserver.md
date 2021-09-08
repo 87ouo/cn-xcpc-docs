@@ -26,9 +26,9 @@ sudo apt install acl zip unzip mariadb-server apache2 \
 
 ```shell
 sudo apt install make sudo debootstrap libcgroup-dev lsof \
-        php-cli php-curl php-json php-xml php-zip procps \
-        gcc g++ ghc fp-compiler default-jre-headless default-jdk-headless\
-        libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev
+      php-cli php-curl php-json php-xml php-zip procps \
+      gcc g++ default-jre-headless default-jdk-headless \
+      ghc fp-compiler libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev unzip
 ```
 
 ### 编译 Domjudge
