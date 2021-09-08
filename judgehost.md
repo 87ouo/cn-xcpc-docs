@@ -182,45 +182,6 @@ sudo systemctl start domjudge-judgehost@3
 `judgedaemon`的日志会保存在 `/var/log/judgehost` 下
 
 
-### 配置多 judgehost 的 systemd 及 rsyslog 新方法
-### 测试启动 judgehost
-
-在每次开机后，需要运行以下脚本初始化 cgroups。
-
-```shell
-sudo /opt/domjudge/judgehost/bin/create_cgroups
-```
-
-然后可以通过
-
-```shell
-/opt/domjudge/judgehost/bin/judgedaemon
-```
-
-启动评测终端。在需要启动多个终端时应该使用 `-n X` 参数，其中 0 <= X < 计算机核数。
-
-### 利用 systemd 配置开机自启动
-
-```shell
-sudo cp /opt/domjudge/lib/systemd/system/domjudge-judgehost.service /opt/domjudge/lib/systemd/system/domjudge-judgehost@.service
-sudo sed -i 's/judgedaemon -n 0/judgedaemon -n %i/g' /opt/domjudge/lib/systemd/system/domjudge-judgehost@.service
-sudo ln -s /opt/domjudge/lib/systemd/system/domjudge-judgehost@.service /lib/systemd/system/
-sudo ln -s /opt/domjudge/lib/systemd/system/create-cgroups.service /lib/systemd/system/
-sudo systemctl enable create-cgroups
-```
-
-启动四个 `judgehost`（按需开启，照葫芦画瓢即可）：
-
-```shell
-sudo systemctl enable domjudge-judgehost@0
-sudo systemctl enable domjudge-judgehost@1
-sudo systemctl enable domjudge-judgehost@2
-sudo systemctl enable domjudge-judgehost@3
-```
-
-`judgedaemon`的日志会保存在 `/opt/domjudge/judgehost/log/` 下。可以通过 `sudo systemctl status domjudge-judgehost@0` 或者 `journalctl -u domjudge-judgehost@0` 查看日志。
-
-
 ## Troubleshooting
 
 ### 1.关于 judgehost 评测语言所需编译器的安装问题
