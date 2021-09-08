@@ -111,7 +111,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet cgroup_enable=memory swapaccount=1"
 sudo update-grub
 ```
 
-之后**重启计算机**。
+之后**重启计算机**。重启计算机后可以通过 `cat /proc/cmdline` 中是否有 `cgroup_enable=memory swapaccount=1` 验证是否安装成功。
 
 ### 启动 judgehost
 
