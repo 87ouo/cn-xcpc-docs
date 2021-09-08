@@ -118,7 +118,7 @@ sudo update-grub
 如果需要使用 cgroup，则每次重启之后都要运行 `/opt/domjudge/judgehost/bin/create_cgroups` 和 `/opt/domjudge/judgehost/bin/judgedaemon` 后即可启动，若提示 `error: Call to undefined function curl_init()`，则可以安装 php-curl 解决  
 
 
-### 配置多 judgehost 的 systemd 及 rsyslog
+### 配置多 judgehost 的 systemd 及 rsyslog 旧方法
 
 使用 `vim`、`nano` 等文本编辑器在 `/lib/systemd/system` 下新建一个文本文件叫做 `create-cgroups.service`，写入下列内容：
 
@@ -180,6 +180,46 @@ sudo systemctl start domjudge-judgehost@3
 ```
 
 `judgedaemon`的日志会保存在 `/var/log/judgehost` 下
+
+
+### 配置多 judgehost 的 systemd 及 rsyslog 新方法
+### 测试启动 judgehost
+
+在每次开机后，需要运行以下脚本初始化 cgroups。
+
+```shell
+sudo /opt/domjudge/judgehost/bin/create_cgroups
+```
+
+然后可以通过
+
+```shell
+/opt/domjudge/judgehost/bin/judgedaemon
+```
+
+启动评测终端。在需要启动多个终端时应该使用 `-n X` 参数，其中 0 <= X < 计算机核数。
+
+### 利用 systemd 配置开机自启动
+
+```shell
+sudo cp /opt/domjudge/lib/systemd/system/domjudge-judgehost.service /opt/domjudge/lib/systemd/system/domjudge-judgehost@.service
+sudo sed -i 's/judgedaemon -n 0/judgedaemon -n %i/g' /opt/domjudge/lib/systemd/system/domjudge-judgehost@.service
+sudo ln -s /opt/domjudge/lib/systemd/system/domjudge-judgehost@.service /lib/systemd/system/
+sudo ln -s /opt/domjudge/lib/systemd/system/create-cgroups.service /lib/systemd/system/
+sudo systemctl enable create-cgroups
+```
+
+启动四个 `judgehost`（按需开启，照葫芦画瓢即可）：
+
+```shell
+sudo systemctl enable domjudge-judgehost@0
+sudo systemctl enable domjudge-judgehost@1
+sudo systemctl enable domjudge-judgehost@2
+sudo systemctl enable domjudge-judgehost@3
+```
+
+`judgedaemon`的日志会保存在 `/opt/domjudge/judgehost/log/` 下。可以通过 `sudo systemctl status domjudge-judgehost@0` 或者 `journalctl -u domjudge-judgehost@0` 查看日志。
+
 
 ## Troubleshooting
 
