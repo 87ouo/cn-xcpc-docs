@@ -74,7 +74,7 @@ sudo cp /opt/domjudge/judgehost/etc/sudoers-domjudge /etc/sudoers.d/
 使用 `vim`、`nano` 等文本编辑器编辑 `/opt/domjudge/judgehost/etc/restapi.secret` 这个文件。文件的格式为：
 
 ```text
-default http://example.edu/domjudge/api/  judgehosts  MzfJYWF5agSlUfmiGEy5mgkfqU
+default http://example.edu/domjudge/api  judgehosts  MzfJYWF5agSlUfmiGEy5mgkfqU
 ```
 
 格式为 `endpoint api_url username password`，`endpoin` 可以保持不变，`api_url` 根据 `domserver` 的地址进行修改，`username` 和 `password` 要与 `domserver` 上的 `etc/restapi.secret`  保持一致。
