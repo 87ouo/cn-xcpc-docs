@@ -13,7 +13,7 @@ Ubuntu 20.04 LTS / 21.04
 ### 安装依赖包和功能
 
 ```shell
-sudo apt-get upgrade && sudo apt-get update
+sudo apt-get update && sudo apt-get upgrade
 ```
 
 ```shell
