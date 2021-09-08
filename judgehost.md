@@ -22,7 +22,7 @@ sudo apt-get upgrade && sudo apt-get update
 sudo apt install make sudo debootstrap libcgroup-dev lsof \
       php-cli php-curl php-json php-xml php-zip procps \
       gcc g++ default-jre-headless default-jdk-headless \
-      ghc fp-compiler
+      ghc fp-compiler libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev
 ```
 
 ### 编译 Domjudge
