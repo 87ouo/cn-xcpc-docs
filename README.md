@@ -1,8 +1,12 @@
-# cn-xcpc-docs(已更新为domjudge7.3.2 - 7.3.3)
+# cn-xcpc-docs(已更新到 DOMjudge 7.3.2 - 8.0.0)
 
 ## 食用指南
 
 netboot: 网络安装与配置选手机
+
+domjudge7.3.4-install(for-nginx-phpfpm): DOMjudge 7.3.4 服务端+评测端的安装与配置
+
+domjudge8.0.0-install(for-nginx-phpfpm): DOMjudge 8.0.0 服务端+评测端的安装与配置
 
 domserver: Domjudge 服务端的安装与配置
 
