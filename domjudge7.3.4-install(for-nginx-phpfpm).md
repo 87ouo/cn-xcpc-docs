@@ -103,7 +103,7 @@ sudo ln -s <path_to_install_domserver>/domserver/etc/domjudge-fpm.conf /etc/php/
 编辑下列文件，以适合所需要的配置：
 `/etc/nginx/sites-enabled/domjudge` 、 `/etc/php/7.4/fpm/pool.d/domjudge.conf` 和 `/etc/php/7.4/fpm/php.ini` 
 
-其中，这些配置文件中的以下的项目需要取消注释、设置成对应且合适的值：
+其中，这些配置文件中的以下的项目需要取消注释，并设置成对应且合适的值：
 
 ```sh
 pm.max_children = 320    ;(每 1GB RAM ≈ 40，16GB RAM 则可设置成 500 )
@@ -114,6 +114,18 @@ php_admin_value[upload_max_filesize] = 512M
 php_admin_value[post_max_size] = 512M
 max_execution_time = 300
 ```
+
+然后编辑 `<path_to_install_domserver>/domserver/etc/nginx-conf-inner` ，在其中 `location /domjudge/` 部分的最后添加 `keepalive_timeout  0;` ，修改后类似以下所示。
+```sh
+location /domjudge/ {
+        root $domjudgeRoot;
+        rewrite ^/domjudge/(.*)$ /$1 break;
+        try_files $uri @domjudgeFront;
+        keepalive_timeout  0;
+}
+```
+修改完成并确认无误后，保存并退出编辑。
+
 
 <br />
 
@@ -445,6 +457,18 @@ sudo systemctl enable --now domjudge-judgehost@n
     ```
 
     若使用 `nano` ，可以使用 *ctrl+w* 来进行搜索。找到 `date.timezone` 并取消注释，并设置成 `Asia/Shanghai` ；找到 `max_execution_time` 并将对应的值设置为 `300` 或以上，以防止生成队伍密码时发生超时。
+
+    <br />    
+
+    编辑 `/etc/apache2/apache2.conf`，搜索 `KeepAlive` 关键字，将其值设为 `Off`，并在其后新增一行内容：
+    ```conf
+    MaxClients 1000
+    ```
+    然后重启 `apache2` 服务，使修改生效。
+    ```shell
+    sudo systemctl restart apache2
+    ```
+
 
 - 4.3不需要操作
 
