@@ -356,7 +356,7 @@ sudo ln -s /opt/domjudge/lib/systemd/system/create-cgroups.service /lib/systemd/
 如果在国内，原有脚本中的源的速度可能会比较慢，我们可以使用以下命令将其替换成国内速度较快的镜像源。
 
 ```sh
-sudo sed -i 's,http://us.archive.ubuntu.com./ubuntu/,http://mirrors.tuna.tsinghua.edu.cn/ubuntu,g' <path_to_install_judgehost>/judgehost/bin/dj_make_chroot
+sudo sed -i 's,http://us.archive.ubuntu.com/ubuntu/,http://mirrors.tuna.tsinghua.edu.cn/ubuntu,g' <path_to_install_judgehost>/judgehost/bin/dj_make_chroot
 ```
 
 可选的镜像源有：
