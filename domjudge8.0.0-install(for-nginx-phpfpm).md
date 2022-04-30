@@ -407,6 +407,8 @@ sudo systemctl enable --now domjudge-judgehost.target
 
 也可以运行 `sudo journalctl -u domjudge-judgedaemon@n` 以查看本系统中第 `n` 台 `judgehost` 的运行情况和记录。
 
+运行 `sudo journalctl -ef -u domjudge-judgedaemon@n` 可以查看本系统中第 `n` 台 `judgehost` 的实时运行情况。
+
 <br />
 <br />
 <br />
