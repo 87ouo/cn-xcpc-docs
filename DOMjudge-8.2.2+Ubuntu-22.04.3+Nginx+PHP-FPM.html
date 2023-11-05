@@ -1,0 +1,224 @@
+<!DOCTYPE html><html><head>
+      <title>DOMjudge-8.2.2+Ubuntu-22.04.3+Nginx+PHP-FPM</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\huaye\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.10\crossnote\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="domjudge-822-实机安装教程"><code>DOMjudge 8.2.2</code> 实机安装教程 </h1>
+<h2 id="一-domserver-安装">一、<code>DOMserver</code> 安装 </h2>
+<h3 id="0-环境纯净状态">0、环境（纯净状态） </h3>
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>- Ubuntu 22.04.3 LTS
+- NGINX 1.18.0
+- PHP 8.1.2-1ubuntu2.14
+- PHP-FPM 8.1
+</code></pre><h3 id="1-安装前置依赖">1、安装前置依赖 </h3>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> acl <span class="token function">zip</span> <span class="token function">unzip</span> mariadb-server nginx <span class="token punctuation">\</span>
+      php php-fpm php-gd php-cli php-intl php-mbstring php-mysql <span class="token punctuation">\</span>
+      php-curl php-json php-xml php-zip <span class="token function">composer</span> ntp
+</code></pre><pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> <span class="token function">make</span> pkg-config <span class="token function">sudo</span> <span class="token function">debootstrap</span> libcgroup-dev <span class="token punctuation">\</span>
+      php-cli php-curl php-json php-xml php-zip <span class="token function">lsof</span> procps
+</code></pre><pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> gcc g++ pypy3 openjdk-17-jdk
+</code></pre><p>完整卸载 <code>apache2</code> 及其组件和残留文件。</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">apt-get</span> autoremove apache2 <span class="token parameter variable">-y</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> remove apache* <span class="token parameter variable">-y</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token parameter variable">--purge</span> remove apache-common <span class="token parameter variable">-y</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token parameter variable">--purge</span> remove apache <span class="token parameter variable">-y</span>
+<span class="token function">sudo</span> <span class="token function">find</span> /etc <span class="token parameter variable">-name</span> <span class="token string">"*apache*"</span> <span class="token operator">|</span><span class="token function">xargs</span>  <span class="token function">rm</span> <span class="token parameter variable">-rf</span> 
+<span class="token function">sudo</span> <span class="token function">rm</span> <span class="token parameter variable">-rf</span> /var/www
+<span class="token function">sudo</span> <span class="token function">rm</span> <span class="token parameter variable">-rf</span> /etc/libapache2-mod-jk
+<span class="token function">sudo</span> dpkg <span class="token parameter variable">-l</span> <span class="token operator">|</span><span class="token function">grep</span> apache2<span class="token operator">|</span><span class="token function">awk</span> <span class="token string">'{print $2}'</span><span class="token operator">|</span><span class="token function">xargs</span> dpkg <span class="token parameter variable">-P</span>
+</code></pre><h3 id="2-下载-domjudge-安装包并保存在指定路径下">2、下载 <code>DOMjudge</code> 安装包并保存在指定路径下 </h3>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">mkdir</span> domjudge-8.2.2-install-files/ <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> domjudge-8.2.2-install-files/
+<span class="token function">wget</span> https://www.domjudge.org/releases/domjudge-8.2.2.tar.gz
+</code></pre><h3 id="3-解压-domjudge-安装包">3、解压 <code>DOMjudge</code> 安装包 </h3>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">tar</span> <span class="token parameter variable">-zxf</span> domjudge-8.2.2.tar.gz
+</code></pre><h3 id="4-创建安装过程所需要的用户并分配用户组">4、创建安装过程所需要的用户并分配用户组 </h3>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">useradd</span> domjudge
+<span class="token function">sudo</span> <span class="token function">usermod</span> <span class="token parameter variable">-aG</span> www-data domjudge
+</code></pre><h3 id="5-进入-domjudge-安装文件目录并开始安装">5、进入 <code>DOMjudge</code> 安装文件目录并开始安装 </h3>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token builtin class-name">cd</span> domjudge-8.2.2/
+./configure --with-domjudge-user<span class="token operator">=</span>domjudge
+<span class="token function">make</span> domserver
+<span class="token function">sudo</span> <span class="token function">make</span> install-domserver
+</code></pre><h3 id="6-mariadb-数据库初始化">6、<code>MariaDB</code> 数据库初始化 </h3>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token builtin class-name">cd</span> /opt/domjudge/domserver/
+<span class="token function">sudo</span> bin/dj_setup_database genpass
+<span class="token comment"># 设置 MariaDB root 账号密码</span>
+<span class="token function">sudo</span> mysql_secure_installation
+<span class="token function">sudo</span> bin/dj_setup_database <span class="token parameter variable">-u</span> root <span class="token parameter variable">-p</span> <span class="token operator">&lt;</span>上一步中设置的 MariaDB root 账户密码<span class="token operator">&gt;</span> <span class="token function">install</span>
+</code></pre><h3 id="7-设置-nginx–php-fpm">7、设置 <code>NGINX + PHP-FPM</code> </h3>
+<h4 id="71-创建配置文件软连接并删除-nginx-默认配置文件">7.1 创建配置文件软连接，并删除 <code>NGINX</code> 默认配置文件 </h4>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">ln</span> <span class="token parameter variable">-s</span> /opt/domjudge/domserver/etc/nginx-conf /etc/nginx/sites-enabled/domjudge
+<span class="token function">sudo</span> <span class="token function">rm</span> <span class="token parameter variable">-f</span> /etc/nginx/sites-enabled/default
+<span class="token comment"># 恢复 default 配置文件</span>
+<span class="token comment"># sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default</span>
+<span class="token function">sudo</span> <span class="token function">ln</span> <span class="token parameter variable">-s</span> /opt/domjudge/domserver/etc/domjudge-fpm.conf /etc/php/8.1/fpm/pool.d/domjudge.conf
+</code></pre><h4 id="72-修改配置文件">7.2 修改配置文件 </h4>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token comment"># 该文件一般不用修改，除非要配置 HTTPS</span>
+<span class="token function">sudo</span> <span class="token function">nano</span> /etc/nginx/sites-enabled/domjudge
+</code></pre><p>以下配置文件中：</p>
+<ul>
+<li>将 <code>set $prefix /domjudge;</code> 修改为 <code>set $prefix '';</code> ，以实现直接访问 <code>http(s)://&lt;host-ip&gt;/</code> 即可直接进入 <code>DOMjudge</code> 首页；</li>
+<li>解除 <code>location /</code> 整个代码块的注释，以配合上方修改；</li>
+<li>注释掉整个 <code>location /domjudge</code> 和 <code>location /domjudge/</code> 两个代码块，以配合上方修改；</li>
+<li>在 <code>location /</code> 代码块中的 <code>try_files $uri @domjudgeFront;</code> 下方另起一行，放入 <code>keepalive_timeout  0;</code> 以关闭长连接，减轻服务器压力。</li>
+</ul>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">nano</span> /opt/domjudge/domserver/etc/nginx-conf-inner
+</code></pre><p>以下配置文件中：</p>
+<ul>
+<li><code>pm.max_children</code> 对应的值请根据 <code>domserver</code> 实际承载量和所在实体机/VM所拥有的内存进行分配，一般按照 <code>40/GB</code> 内存进行计算，<code>16GB</code> 的内存可设置为 <code>500</code> ；</li>
+<li><code>php_admin_value[memory_limit]</code> 的值已设置好，若有需求请自行修改；</li>
+<li><code>php_admin_value[upload_max_filesize]</code> 的值已设置好，若有需求请自行修改；</li>
+<li><code>php_admin_value[post_max_size]</code> 的值已设置好，若有需求请自行修改；</li>
+<li><code>php_admin_value[max_file_uploads]</code> 的值已设置好，若有需求请自行修改；</li>
+<li>取消掉 <code>php_admin_value[date.timezone]</code> 的注释，并把对应的值设置为 <code>Asia/Shanghai</code>。</li>
+</ul>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">nano</span> /etc/php/8.1/fpm/pool.d/domjudge.conf
+</code></pre><p>配置文件修改完成后，重启服务</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">service</span> php8.1-fpm reload
+<span class="token function">sudo</span> nginx <span class="token parameter variable">-t</span>
+<span class="token function">sudo</span> <span class="token function">service</span> nginx reload
+</code></pre><h4 id="8–修改-mariadb-配置">8、 修改 <code>MariaDB</code> 配置 </h4>
+<p>在以下配置文件中，加入或修改已有对应配置项为如下内容：</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token punctuation">[</span>mysqld<span class="token punctuation">]</span>
+max_connections <span class="token operator">=</span> <span class="token number">1000</span>
+max_allowed_packet <span class="token operator">=</span> 1024MB
+innodb_log_file_size <span class="token operator">=</span> 4096MB
+</code></pre><pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">nano</span> /etc/mysql/conf.d/mysql.cnf
+</code></pre><p>使用 <code>MariaDB</code> 请连带修改如下配置文件中的 <code>max_allowed_packet</code> 并于上述修改中的对应配置项的对应值保持一致。</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">nano</span> /etc/mysql/mariadb.conf.d/50-server.cnf
+</code></pre><p>若要使用 <code>mysqldump</code>，请连带修改如下配置文件中的 <code>max_allowed_packet</code> 的值直至合适。</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">nano</span> /etc/mysql/conf.d/mysqldump.cnf
+</code></pre><p>修改完成后请重启 <code>MariaDB</code> 服务。</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> systemctl restart mysql
+</code></pre><h4 id="9-获取-admin-账号密码">9、获取 <code>admin</code> 账号密码 </h4>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">cat</span> etc/initial_admin_password.secret
+</code></pre><p>获取到 <code>admin</code> 的账号密码后，请使用浏览器打开 <code>http(s)://&lt;host-ip&gt;/</code> 打开 <code>DOMjudge</code> 前端，并尝试登陆管理后台，若有必要可以修改 <code>admin</code> 账号密码，但请注意保管妥当。</p>
+<h2 id="二-judgehost-安装">二、<code>Judgehost</code> 安装 </h2>
+<h3 id="0-环境纯净状态-1">0、环境（纯净状态） </h3>
+<ul>
+<li>Ubuntu 22.04.3 LTS</li>
+</ul>
+<h3 id="1-安装前置依赖-1">1、安装前置依赖 </h3>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> <span class="token function">make</span> pkg-config <span class="token function">sudo</span> <span class="token function">debootstrap</span> libcgroup-dev <span class="token punctuation">\</span>
+      php-cli php-curl php-json php-xml php-zip <span class="token function">lsof</span> procps
+</code></pre><pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> gcc g++ pypy3 openjdk-17-jdk
+</code></pre><h3 id="2-卸载冲突软件包">2、卸载冲突软件包 </h3>
+<p>一些系统（像 <code>Ubuntu</code> ）会默认带有 <code>apport</code> 软件包，其会与判题作业产生冲突，需要卸载。</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">apt</span> remove apport
+</code></pre><h3 id="3-下载-domjudge-安装包并保存在指定路径下">3、下载 <code>DOMjudge</code> 安装包并保存在指定路径下 </h3>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">mkdir</span> domjudge-8.2.2-install-files/ <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> domjudge-8.2.2-install-files/
+<span class="token function">wget</span> https://www.domjudge.org/releases/domjudge-8.2.2.tar.gz
+</code></pre><h3 id="4-解压-domjudge-安装包">4、解压 <code>DOMjudge</code> 安装包 </h3>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">tar</span> <span class="token parameter variable">-zxf</span> domjudge-8.2.2.tar.gz
+</code></pre><h3 id="5-创建安装过程所需要的用户并分配用户组">5、创建安装过程所需要的用户并分配用户组 </h3>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">useradd</span> domjudge
+<span class="token function">sudo</span> <span class="token function">usermod</span> <span class="token parameter variable">-aG</span> www-data domjudge
+</code></pre><h3 id="6-进入-domjudge-安装文件目录并开始安装">6、进入 <code>DOMjudge</code> 安装文件目录并开始安装 </h3>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token builtin class-name">cd</span> domjudge-8.2.2/
+./configure --with-domjudge-user<span class="token operator">=</span>domjudge
+<span class="token function">make</span> judgehost
+<span class="token function">sudo</span> <span class="token function">make</span> install-judgehost
+</code></pre><h3 id="7–cpu-条件检查">7、 <code>CPU</code> 条件检查 </h3>
+<ul>
+<li>因为【超线程技术】、【睿频】及【 <code>CPU</code> 功率动态调整（动态节能）】功能的存在，可能会导致同样的一发代码的运行时间存在差异。大型赛事中这样的误差通常是不可被接受的，所以我们需要在 <code>Judgehost</code> 所在的物理机的 <code>BIOS</code> 上关闭前述功能，将 <code>CPU</code> 的时钟频率固定在一个特定值上，以使每次提交均拥有一致的判题性能基线。</li>
+<li><strong>需要特别注意的是：</strong> 如果是在 <code>PVE(PROXMOX Virtual Environment)</code> 、 <code>VMware ESXi</code> 等虚拟化环境下，在 <code>VM</code> 中运行以下确认超线程技术的命令时的返回值可能并<strong>不能</strong>代表实际情况，<strong>请注意！</strong></li>
+<li>运行以下命令，若返回值为 <code>Thread(s) per core: 1</code> 这说明目前每个 <code>CPU</code> 核心上只有一个线程。</li>
+</ul>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code>lscpu <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"Thread(s) per core"</span>
+</code></pre><ul>
+<li>或者也可以使用以下命令检查 <code>CPU</code> 超线程技术是否开启，若返回值为 <code>0</code> ，这说明超线程技术未被开启。</li>
+</ul>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">cat</span> /sys/devices/system/cpu/smt/active
+</code></pre><p>执行以下命令以确认 <code>CPU</code> 核心范围。这里获得的范围值将会影响下方的 <code>Judgehost</code> 实例设置命令，请注意。</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">cat</span> /sys/devices/system/cpu/online
+</code></pre><h3 id="8-创建-judgehost-实例所需的用户组和用户">8、创建 <code>Judgehost</code> 实例所需的用户组和用户 </h3>
+<ul>
+<li>创建所需用户组</li>
+</ul>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">groupadd</span> domjudge-run
+</code></pre><ul>
+<li>创建所需用户。注意，命令中形如 <code>domjudge-run-2</code> 中的 <code>-2</code> 代表的是要将该 <code>Judgehost</code> 实例绑定到哪个 <code>CPU</code> 核心上。</li>
+</ul>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">useradd</span> <span class="token parameter variable">-d</span> /nonexistent <span class="token parameter variable">-g</span> domjudge-run <span class="token parameter variable">-M</span> <span class="token parameter variable">-s</span> /bin/false domjudge-run-2
+<span class="token function">sudo</span> <span class="token function">useradd</span> <span class="token parameter variable">-d</span> /nonexistent <span class="token parameter variable">-g</span> domjudge-run <span class="token parameter variable">-M</span> <span class="token parameter variable">-s</span> /bin/false domjudge-run-3
+<span class="token function">sudo</span> <span class="token function">useradd</span> <span class="token parameter variable">-d</span> /nonexistent <span class="token parameter variable">-g</span> domjudge-run <span class="token parameter variable">-M</span> <span class="token parameter variable">-s</span> /bin/false domjudge-run-4
+<span class="token function">sudo</span> <span class="token function">useradd</span> <span class="token parameter variable">-d</span> /nonexistent <span class="token parameter variable">-g</span> domjudge-run <span class="token parameter variable">-M</span> <span class="token parameter variable">-s</span> /bin/false domjudge-run-5
+</code></pre><h3 id="9-赋予-judgehost-实例-sudoer-权限">9、赋予 <code>Judgehost</code> 实例 <code>sudoer</code> 权限 </h3>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">ln</span> <span class="token parameter variable">-s</span> /opt/domjudge/judgehost/etc/sudoers-domjudge /etc/sudoers.d/sudoers-domjudge
+</code></pre><h3 id="10-创建-chroot-环境">10、创建 <code>chroot</code> 环境 </h3>
+<p>默认情况下，<code>bin/dj_make_chroot</code> 将会使用 <code>Ubuntu</code> 官方镜像源，部分地区的速度可能较慢，这种情况下可以使用 <code>-m &lt;mirror-url&gt;</code> 参数来指定速度较快的镜像源。</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token builtin class-name">cd</span> /opt/domjudge/judgehost/
+<span class="token function">sudo</span> <span class="token function">bash</span> bin/dj_make_chroot <span class="token parameter variable">-m</span> http://repo.huaweicloud.com/ubuntu
+<span class="token comment"># 可选的镜像源有：</span>
+<span class="token comment"># 华为源：repo.huaweicloud.com</span>
+<span class="token comment"># Ubuntu 中国镜像源：cn.archive.ubuntu.com</span>
+<span class="token comment"># 清华源：mirrors.tuna.tsinghua.edu.cn</span>
+<span class="token comment"># 中科大源：mirrors.ustc.edu.cn</span>
+<span class="token comment"># …… ……</span>
+</code></pre><h3 id="11-修改-cgroups">11、修改 <code>cgroups</code> </h3>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">nano</span> /etc/default/grub
+<span class="token comment"># 一些非常规版本的 Linux 系统，类如 cloud-init镜像、Google Cloud Platform 、DigitalOcean上的系统，GRUB_CMDLINE_LINUX_DEFAULT 可能会被 /etc/default/grub.d/ 下的某个配置文件覆盖，所以需要一同修改。</span>
+<span class="token function">sudo</span> <span class="token function">nano</span> /etc/default/grub.d/50-cloudimg-settings.cfg
+</code></pre><p>修改可参考下方。其中：</p>
+<ul>
+<li><code>cgroup_enable=memory swapaccount=1</code> 是必要的；</li>
+<li><code>isolcpus=2,3,4,5</code> 代表让系统<strong>不要</strong>将除了绑定在这个核心上的 <code>Judgehost</code> 之外的任务分配到这个核心上、以获得更加精确的判题性能基线和更加一致的判题运行时间。</li>
+<li>在一些较为新的操作系统上（例如 <code>Ubuntu 22.04</code> ），<code>cgroup v2</code> 默认处于开启状态，因此我们还需要加入 <code>systemd.unified_cgroup_hierarchy=0</code>。</li>
+</ul>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token assign-left variable">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="token operator">=</span><span class="token string">"quiet splash cgroup_enable=memory swapaccount=1 isolcpus=2,3,4,5 systemd.unified_cgroup_hierarchy=0"</span>
+</code></pre><p>更新完成后运行 <code>update-grub</code> 并重启。<strong>请注意</strong>要做好备份，修改出错的话系统将<strong>无法正常启动</strong>。</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">update-grub</span>
+<span class="token function">sudo</span> <span class="token function">reboot</span>
+<span class="token comment"># 重启完成后，运行以下命令以查看修改是否生效</span>
+<span class="token function">cat</span> /proc/cmdline
+<span class="token comment"># 然后运行此命令以启动 judgehost 的 create-cgroups 服务</span>
+<span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> create-cgroups <span class="token parameter variable">--now</span>
+</code></pre><h3 id="12-修改-judgehost-实例连接信息">12、修改 <code>Judgehost</code> 实例连接信息 </h3>
+<p>修改以下配置文件中的 <code>domserver</code> 地址和 <code>judgehost</code> 账户的密码。 <code>judgehost</code> 账户的密码可以在 <code>domserver</code> 所在机子的 <code>/opt/domjudge/domserver/etc/restapi.secret</code> 文件中获取。</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">nano</span> etc/restapi.secret
+</code></pre><h3 id="13-修改-judgehost-实例-systemd-配置文件并启动服务">13、修改 <code>Judgehost</code> 实例 <code>systemd</code> 配置文件并启动服务 </h3>
+<p>在以下的配置文件中，<code>Requires=</code> 后可以设置为 <code>domjudge-judgedaemon@2.service domjudge-judgedaemon@3.service … …</code>，以实现单机多 <code>Judgehost</code> 实例。注意 <code>domjudge-judgedaemon@n</code> 中的 <code>n</code> 需要与本教程《 <code>Judgehost</code> 安装》篇中第 8 节中设置的值对应上。</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> <span class="token function">nano</span> /lib/systemd/system/domjudge-judgehost.target
+</code></pre><p>设置完后，启用 <code>Judgehost</code> 服务。以后会开机自启。</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> <span class="token parameter variable">--now</span> domjudge-judgehost.target
+</code></pre><p>服务启动后，可以使用以下的命令查看本机的 <code>Judgehost</code> 整体服务情况</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> systemctl status domjudge-judgehost.target
+</code></pre><p>可以使用以下的命令查看本机中第n个 <code>Judgehost</code> 实例的当前运行情况</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> systemctl status domjudge-judgedaemon@n.service
+</code></pre><p>可以使用以下的命令查看本机中第n个 <code>Judgehost</code> 实例的详细日志情况</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> journalctl <span class="token parameter variable">-ef</span> <span class="token parameter variable">-u</span> domjudge-judgedaemon@n.service
+</code></pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
