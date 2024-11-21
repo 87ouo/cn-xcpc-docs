@@ -122,7 +122,7 @@ sudo nginx -t
 sudo service nginx reload
 ```
 
-#### 7、 修改 `MariaDB` 配置
+### 7、 修改 `MariaDB` 配置
 
 在以下配置文件中，加入或修改已有对应配置项为如下内容：
 
@@ -155,7 +155,7 @@ sudo nano /etc/mysql/conf.d/mysqldump.cnf
 sudo systemctl restart mysql
 ```
 
-#### 8、获取 `admin` 账号密码
+### 8、获取 `admin` 账号密码
 
 ```shell
 sudo cat etc/initial_admin_password.secret
