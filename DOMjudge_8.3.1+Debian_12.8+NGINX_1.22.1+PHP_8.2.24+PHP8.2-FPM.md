@@ -16,9 +16,8 @@
 ```shell
 sudo apt install libcgroup-dev make acl zip unzip pv mariadb-server nginx \
       php php-fpm php-gd php-cli php-intl php-mbstring php-mysql php-curl \
-      php-json php-xml php-zip composer ntp python3-yaml make pkg-config \
-      sudo debootstrap libcgroup-dev php-cli php-curl php-json php-xml \
-      php-zip lsof procps gcc g++ pypy3 openjdk-17-jdk gfortran
+      php-json php-xml php-zip composer ntp python3-yaml pkg-config \
+      debootstrap lsof procps gcc g++ pypy3 openjdk-17-jdk
 ```
 
 完整卸载 `apache2` 及其组件和残留文件。
@@ -248,9 +247,9 @@ make docs
 ### 1、安装前置依赖
 
 ```shell
-sudo apt install make pkg-config sudo debootstrap libcgroup-dev \
+sudo apt install make pkg-config debootstrap libcgroup-dev \
       php-cli php-curl php-json php-xml php-zip lsof procps \
-      gcc g++ pypy3 openjdk-17-jdk gfortran
+      gcc g++ pypy3 openjdk-17-jdk
 ```
 
 ### 2、卸载冲突软件包
