@@ -137,7 +137,7 @@ innodb_log_file_size = 4096MB
 sudo nano /etc/mysql/conf.d/mysql.cnf
 ```
 
-使用 `MariaDB` 请连带修改如下配置文件中的 `max_allowed_packet` 并于上述修改中的对应配置项的对应值保持一致。
+使用 `MariaDB` 请连带修改如下配置文件中的 `max_allowed_packet` 和 `max_connections` 并于上述修改中的对应配置项的对应值保持一致。
 
 ```shell
 sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
@@ -161,8 +161,7 @@ sudo systemctl restart mysql
 sudo cat etc/initial_admin_password.secret
 ```
 
-获取到 `admin` 的账号密码后，请使用浏览器打开 `http(s)://<host-ip>/` 打开 `DOMjudge`
-前端，并尝试登陆管理后台，若有必要可以修改 `admin` 账号密码，但请注意保管妥当。
+获取到 `admin` 的账号密码后，请使用浏览器打开 `http(s)://<host-ip>/` 打开 `DOMjudge` 前端，并尝试登陆管理后台，若有必要可以修改 `admin` 账号密码，但请注意保管妥当。
 
 ## 二、`Judgehost` 安装
 
@@ -298,8 +297,7 @@ sudo ln -s /opt/domjudge/judgehost/etc/sudoers-domjudge /etc/sudoers.d/sudoers-d
 
 ### 9、创建 `chroot` 环境
 
-默认情况下，`bin/dj_make_chroot` 将会使用 `Debian` 官方镜像源（这个将依据你所使用的发行版不同而不同），部分地区的速度可能较慢，这种情况下可以使用 `-m <mirror-url>`
-参数来指定速度较快的镜像源。
+默认情况下，`bin/dj_make_chroot` 将会使用 `Debian` 官方镜像源（这个将依据你所使用的发行版不同而不同），部分地区的速度可能较慢，这种情况下可以使用 `-m <mirror-url>` 参数来指定速度较快的镜像源。
 
 ```shell
 cd /opt/domjudge/judgehost/
@@ -344,8 +342,7 @@ sudo systemctl enable create-cgroups --now
 
 ### 11、修改 `Judgehost` 实例连接信息
 
-修改以下配置文件中的 `domserver` 地址和 `judgehost` 账户的密码。 `judgehost` 账户的密码可以在 `domserver`
-所在机子的 `/opt/domjudge/domserver/etc/restapi.secret` 文件中获取。
+修改以下配置文件中的 `domserver` 地址和 `judgehost` 账户的密码。 `judgehost` 账户的密码可以在 `domserver` 所在机子的 `/opt/domjudge/domserver/etc/restapi.secret` 文件中获取。
 
 ```shell
 sudo nano /opt/domjudge/judgehost/etc/restapi.secret
@@ -353,8 +350,7 @@ sudo nano /opt/domjudge/judgehost/etc/restapi.secret
 
 ### 12、修改 `Judgehost` 实例 `systemd` 配置文件并启动服务
 
-在以下的配置文件中，`Requires=` 后可以设置为 `domjudge-judgedaemon@2.service domjudge-judgedaemon@3.service … …`
-，以实现单机多 `Judgehost` 实例。注意 `domjudge-judgedaemon@n` 中的 `n` 需要与本教程《 `Judgehost` 安装》篇中第 8 节中设置的值对应上。
+在以下的配置文件中，`Requires=` 后可以设置为 `domjudge-judgedaemon@2.service domjudge-judgedaemon@3.service … …` ，以实现单机多 `Judgehost` 实例。注意 `domjudge-judgedaemon@n` 中的 `n` 需要与本教程《`Judgehost` 安装》篇中第 8 节中设置的值对应上。
 
 ```shell
 sudo nano /lib/systemd/system/domjudge-judgehost.target
