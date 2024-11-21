@@ -4,12 +4,13 @@
 
 ### 0、环境（纯净状态）
 
-```shell
+
 - Debian 12.5.0
 - NGINX 1.22.1
 - PHP 8.2.7
-- PHP-FPM 8.2
-```
+- PHP8.2-FPM
+
+✨✨✨以下所有操作，请使用一个 **非 `root` 账户 且 属于 `sudoers` 组（即该账户可以使用 `sudo` 命令）** 的账户来进行。✨✨✨
 
 ### 1、安装前置依赖
 
@@ -54,35 +55,26 @@ wget https://www.domjudge.org/releases/domjudge-8.2.3.tar.gz
 tar -zxf domjudge-8.2.3.tar.gz
 ```
 
-### 4、创建安装过程所需要的用户并分配用户组
-
-```shell
-sudo useradd domjudge
-sudo usermod -aG www-data domjudge
-```
-
-### 5、进入 `DOMjudge` 安装文件目录并开始安装
+### 4、进入 `DOMjudge` 安装文件目录并开始安装
 
 ```shell
 cd domjudge-8.2.3/
-./configure --with-domjudge-user=domjudge --prefix=/opt/domjudge
+./configure --prefix=/opt/domjudge
 make domserver
 sudo make install-domserver
 ```
 
-### 6、`MariaDB` 数据库初始化
+### 5、`MariaDB` 数据库初始化
 
 ```shell
-cd /opt/domjudge/domserver/
-sudo bin/dj_setup_database genpass
-# 设置 MariaDB root 账号密码
-sudo mysql_secure_installation
-sudo bin/dj_setup_database -u root -p <上一步中设置的 MariaDB root 账户密码> install
+cd /opt/domjudge/domserver/bin/
+./dj_setup_database genpass
+sudo ./dj_setup_database -s install
 ```
 
-### 7、设置 `NGINX + PHP-FPM`
+### 6、设置 `NGINX + PHP-FPM`
 
-#### 7.1 创建配置文件软连接，并删除 `NGINX` 默认配置文件
+#### 6.1 创建配置文件软连接，并删除 `NGINX` 默认配置文件
 
 ```shell
 sudo ln -s /opt/domjudge/domserver/etc/nginx-conf /etc/nginx/sites-enabled/domjudge
@@ -92,7 +84,7 @@ sudo rm -f /etc/nginx/sites-enabled/default
 sudo ln -s /opt/domjudge/domserver/etc/domjudge-fpm.conf /etc/php/8.2/fpm/pool.d/domjudge.conf
 ```
 
-#### 7.2 修改配置文件
+#### 6.2 修改配置文件
 
 ```shell
 # 该文件一般不用修改，除非要配置 HTTPS
@@ -101,11 +93,9 @@ sudo nano /etc/nginx/sites-enabled/domjudge
 
 以下配置文件中：
 
-- 将 `set $prefix /domjudge;` 修改为 `set $prefix '';` ，以实现直接访问 `http(s)://<host-ip>/` 即可直接进入 `DOMjudge`
-  首页；
+- 将 `set $prefix /domjudge;` 修改为 `set $prefix '';` ，以实现直接访问 `http(s)://<host-ip>/` 即可直接进入 `DOMjudge` 首页；
 - 解除 `location /` 整个代码块的注释，以配合上方修改；
-- 注释掉整个 `location /domjudge` 和 `location /domjudge/` 两个代码块，以配合上方修改；
-- 在 `location /` 代码块中的 `try_files $uri @domjudgeFront;` 下方另起一行，放入 `keepalive_timeout  0;` 以关闭长连接，减轻服务器压力。
+- 注释掉整个 `location /domjudge` 和 `location /domjudge/` 两个代码块，以配合上方修改。
 
 ```shell
 sudo nano /opt/domjudge/domserver/etc/nginx-conf-inner
@@ -113,8 +103,7 @@ sudo nano /opt/domjudge/domserver/etc/nginx-conf-inner
 
 以下配置文件中：
 
-- `pm.max_children` 对应的值请根据 `domserver` 实际承载量和所在实体机/VM所拥有的内存进行分配，一般按照 `40/GB`
-  内存进行计算，`16GB` 的内存可设置为 `500` ；
+- `pm.max_children` 对应的值请根据 `domserver` 实际承载量和所在实体机/VM所拥有的内存进行分配，一般按照 `40/GB` 内存进行计算，`16GB` 的内存可设置为 `500` ；
 - `php_admin_value[memory_limit]` 的值已设置好，若有需求请自行修改；
 - `php_admin_value[upload_max_filesize]` 的值已设置好，若有需求请自行修改；
 - `php_admin_value[post_max_size]` 的值已设置好，若有需求请自行修改；
@@ -133,7 +122,7 @@ sudo nginx -t
 sudo service nginx reload
 ```
 
-#### 8、 修改 `MariaDB` 配置
+#### 7、 修改 `MariaDB` 配置
 
 在以下配置文件中，加入或修改已有对应配置项为如下内容：
 
@@ -166,7 +155,7 @@ sudo nano /etc/mysql/conf.d/mysqldump.cnf
 sudo systemctl restart mysql
 ```
 
-#### 9、获取 `admin` 账号密码
+#### 8、获取 `admin` 账号密码
 
 ```shell
 sudo cat etc/initial_admin_password.secret
@@ -213,29 +202,19 @@ wget https://www.domjudge.org/releases/domjudge-8.2.3.tar.gz
 tar -zxf domjudge-8.2.3.tar.gz
 ```
 
-### 5、创建安装过程所需要的用户并分配用户组
-
-```shell
-sudo useradd domjudge
-sudo usermod -aG www-data domjudge
-```
-
-### 6、进入 `DOMjudge` 安装文件目录并开始安装
+### 5、进入 `DOMjudge` 安装文件目录并开始安装
 
 ```shell
 cd domjudge-8.2.3/
-./configure --with-domjudge-user=domjudge --prefix=/opt/domjudge
+./configure --prefix=/opt/domjudge
 make judgehost
 sudo make install-judgehost
 ```
 
-### 7、 `CPU` 条件检查
+### 6、 `CPU` 条件检查
 
-- 因为【超线程技术】、【睿频】及【 `CPU`
-  功率动态调整（动态节能）】功能的存在，可能会导致同样的一发代码的运行时间存在差异。大型赛事中这样的误差通常是不可被接受的，所以我们需要在 `Judgehost`
-  所在的物理机的 `BIOS` 上关闭前述功能，将 `CPU` 的时钟频率固定在一个特定值上，以使每次提交均拥有一致的判题性能基线。
-- **需要特别注意的是：** 如果是在 `PVE(PROXMOX Virtual Environment)` 、 `VMware ESXi` 等虚拟化环境下，在 `VM`
-  中运行以下确认超线程技术的命令时的返回值可能并**不能**代表实际情况，**请注意！**
+- 因为【超线程技术】、【睿频】及【 `CPU` 功率动态调整（动态节能）】功能的存在，可能会导致同样的一发代码的运行时间存在差异。大型赛事中这样的误差通常是不可被接受的，所以我们需要在 `Judgehost` 所在的物理机的 `BIOS` 上关闭前述功能，将 `CPU` 的时钟频率固定在一个特定值上，以使每次提交均拥有一致的判题性能基线。
+- **需要特别注意的是：** 如果是在 `PVE(PROXMOX Virtual Environment)` 、 `VMware ESXi` 等虚拟化环境下，在 `VM` 中运行以下确认超线程技术的命令时的返回值可能并**不能**代表实际情况，**请注意！**
 - 运行以下命令，若返回值为 `Thread(s) per core: 1` 这说明目前每个 `CPU` 核心上只有一个线程。
 
 ```shell
@@ -294,7 +273,7 @@ sudo cpupower -c all frequency-set -g performance
 sudo cpupower -c all frequency-set -g powersave
 ```
 
-### 8、创建 `Judgehost` 实例所需的用户组和用户
+### 7、创建 `Judgehost` 实例所需的用户组和用户
 
 - 创建所需用户组
 
@@ -311,13 +290,13 @@ sudo useradd -d /nonexistent -g domjudge-run -M -s /bin/false domjudge-run-4
 sudo useradd -d /nonexistent -g domjudge-run -M -s /bin/false domjudge-run-5
 ```
 
-### 9、赋予 `Judgehost` 实例 `sudoer` 权限
+### 8、赋予 `Judgehost` 实例 `sudoer` 权限
 
 ```shell
 sudo ln -s /opt/domjudge/judgehost/etc/sudoers-domjudge /etc/sudoers.d/sudoers-domjudge
 ```
 
-### 10、创建 `chroot` 环境
+### 9、创建 `chroot` 环境
 
 默认情况下，`bin/dj_make_chroot` 将会使用 `Debian` 官方镜像源（这个将依据你所使用的发行版不同而不同），部分地区的速度可能较慢，这种情况下可以使用 `-m <mirror-url>`
 参数来指定速度较快的镜像源。
@@ -333,7 +312,7 @@ sudo bash bin/dj_make_chroot -m https://mirrors.ustc.edu.cn/debian
 # …… ……
 ```
 
-### 11、修改 `cgroups`
+### 10、修改 `cgroups`
 
 ```shell
 sudo nano /etc/default/grub
@@ -341,12 +320,12 @@ sudo nano /etc/default/grub
 sudo nano /etc/default/grub.d/50-cloudimg-settings.cfg
 ```
 
-修改可参考下方。其中：
+修改操作参考下方提示：
 
 - `cgroup_enable=memory swapaccount=1` 是必要的；
-- `isolcpus=2,3,4,5` 代表让系统**不要**将除了绑定在这个核心上的 `Judgehost` 之外的任务分配到这个核心上、以获得更加精确的判题性能基线和更加一致的判题运行时间。
-- 在一些较为新的操作系统上（例如 `Ubuntu 22.04` ），`cgroup v2`
-  默认处于开启状态，因此我们还需要加入 `systemd.unified_cgroup_hierarchy=0`。
+- `isolcpus=2,3,4,5` 代表让系统**不要**将除了绑定在这几个核心上的 `Judgehost` 之外的任务分配到这几个核心上、以获得更加精确的判题性能基线和更加一致的判题运行时间；
+- 在一些较为新的发行版上（例如 `Debian Bullseye` 及后续版本、`Ubuntu Jammy Jellyfish` 及后续版本 ），`cgroup v2` 默认处于开启状态，因此我们还需要加入 `systemd.unified_cgroup_hierarchy=0`；
+- 如果运行环境中的 `systemd` 的版本 ≥ `v257`，则还需要加入 `SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1`。
 
 ```shell
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash cgroup_enable=memory swapaccount=1 isolcpus=2,3,4,5 systemd.unified_cgroup_hierarchy=0"
@@ -363,7 +342,7 @@ cat /proc/cmdline
 sudo systemctl enable create-cgroups --now
 ```
 
-### 12、修改 `Judgehost` 实例连接信息
+### 11、修改 `Judgehost` 实例连接信息
 
 修改以下配置文件中的 `domserver` 地址和 `judgehost` 账户的密码。 `judgehost` 账户的密码可以在 `domserver`
 所在机子的 `/opt/domjudge/domserver/etc/restapi.secret` 文件中获取。
@@ -372,7 +351,7 @@ sudo systemctl enable create-cgroups --now
 sudo nano /opt/domjudge/judgehost/etc/restapi.secret
 ```
 
-### 13、修改 `Judgehost` 实例 `systemd` 配置文件并启动服务
+### 12、修改 `Judgehost` 实例 `systemd` 配置文件并启动服务
 
 在以下的配置文件中，`Requires=` 后可以设置为 `domjudge-judgedaemon@2.service domjudge-judgedaemon@3.service … …`
 ，以实现单机多 `Judgehost` 实例。注意 `domjudge-judgedaemon@n` 中的 `n` 需要与本教程《 `Judgehost` 安装》篇中第 8 节中设置的值对应上。
