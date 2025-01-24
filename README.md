@@ -1,8 +1,10 @@
-# cn-xcpc-docs(已更新到 DOMjudge 8.2.3)
+# cn-xcpc-docs(已更新到 DOMjudge 8.3.1)
 
 ## 食用指南
 
 netboot: 网络安装与配置选手机
+
+DOMjudge_8.3.1+Debian_12.8+NGINX_1.22.1+PHP_8.2.24+PHP8.2-FPM: DOMjudge 8.3.1 服务端+评测端的安装与配置
 
 DOMjudge-8.2.3+Debian-12.5.0+Nginx+PHP-FPM: DOMjudge 8.2.3 服务端+评测端的安装与配置
 
