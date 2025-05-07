@@ -27,10 +27,10 @@ sudo apt-get autoremove apache2 -y
 sudo apt-get remove apache* -y
 sudo apt-get --purge remove apache-common -y
 sudo apt-get --purge remove apache -y
-sudo find /etc -name "*apache*" |xargs  rm -rf 
+sudo find /etc -name "*apache*" |xargs sudo rm -rf 
 sudo rm -rf /var/www
 sudo rm -rf /etc/libapache2-mod-jk
-sudo dpkg -l |grep apache2|awk '{print $2}'|xargs dpkg -P
+sudo dpkg -l |grep apache2|awk '{print $2}'|xargs sudo dpkg -P
 ```
 
 ### 2、下载 `DOMjudge` 安装包并保存在指定路径下
