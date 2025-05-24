@@ -1,5 +1,10 @@
 # `DOMjudge 8.3.1` 实机安装教程
 
+
+## Changelog
+- 20250524：本教程在 Debian 12.11 ARM64 (on Apple Silicon M3 Ultra, with VMware Fusion Pro 13.6.3) 上实测安装成功，且判题成功(cpp)。 **但鉴于 Work on ARM 的实际案例相对较少，建议谨慎考虑。** 有兴趣的朋友们可以尝试在【娱乐赛/训练赛/新生赛】等重要程度相对较低的比赛中测试基于 ARM 平台的可行性和性能表现，也欢迎有相关经验的朋友们一起交流。
+
+
 ## 一、`DOMserver` 安装
 
 ### 0、环境（纯净状态）
